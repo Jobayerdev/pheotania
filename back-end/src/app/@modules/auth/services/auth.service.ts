@@ -11,12 +11,19 @@ export class AuthService {
     private bcryptHelper: BcryptHelper,
   ) {}
   async loginUser(payload: LoginUserDto) {
-    const user = false;
+    const user = { password: '123456' };
 
     if (!user) {
       throw new AuthException('User Not Exist');
     }
 
-    //Todo
+    const isPassCorrect: boolean = await this.bcryptHelper.compareHash(
+      payload.password,
+      user.password,
+    );
+
+    if (!isPassCorrect) {
+      throw new AuthException('Invalid Password');
+    }
   }
 }

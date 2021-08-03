@@ -5,6 +5,11 @@ import { ApiProperty } from '@nestjs/swagger';
 export class LoginUserDto {
   @IsString()
   @IsNotEmpty()
-  @ApiProperty({ example: '01853753854' })
+  @ApiProperty({ example: '01636476123' })
   readonly phoneNumber: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty({ example: '123456' })
+  readonly password: string;
 }
