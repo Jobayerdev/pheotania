@@ -2,10 +2,10 @@ import { BcryptHelper, JWTHelper } from '@application/helpers';
 
 import { AuthException } from '@application/errors/auth.exception';
 import { Injectable } from '@nestjs/common';
-import { LoginUserDto } from './../dtos/login-user.dto';
+import { LoginUserDto } from '../dtos/login-user.dto';
 
 @Injectable()
-export class AuthService {
+export class AuthLoginService {
   constructor(
     private readonly jwtHelper: JWTHelper,
     private bcryptHelper: BcryptHelper,

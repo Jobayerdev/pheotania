@@ -1,7 +1,6 @@
 import { Column, Entity } from 'typeorm';
 
 import { BaseEntity } from '@application/base/base.entity';
-import { IsEmail } from 'class-validator';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -17,8 +16,4 @@ export class User extends BaseEntity {
 
   @Column({ nullable: false })
   name?: string;
-
-  @Column({ unique: true })
-  @IsEmail()
-  email?: string;
 }
