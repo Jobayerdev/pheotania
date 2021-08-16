@@ -22,5 +22,6 @@ const CONTROLLERS = [UserController];
   ],
   controllers: [...CONTROLLERS],
   providers: [...SERVICES],
+  exports: [UserService],
 })
 export class UserModule {}

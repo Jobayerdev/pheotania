@@ -20,9 +20,6 @@ export class UserService {
 
   async create(createUserDto: CreateUserDTO) {
     const { password, name, phoneNumber } = createUserDto;
-
-    // Check is use already exist.
-
     try {
       const hashPassword = await this.bcryptHelper.hashString(password);
       const result = await this.userRepository.insert({
@@ -44,6 +41,17 @@ export class UserService {
       } else {
         return errorPlaceholder('UserRegisterFailedError', err.message);
       }
+    }
+  }
+
+  async findByPhoneNumber(phoneNumber: string) {
+    try {
+      return this.userRepository.findOne(
+        { phoneNumber },
+        { select: ['phoneNumber', 'password'] },
+      );
+    } catch (error) {
+      throw new Error(error);
     }
   }
 }
