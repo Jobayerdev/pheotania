@@ -6,7 +6,6 @@ import { BcryptHelper, JWTHelper } from '@application/helpers';
 
 import { Injectable } from '@nestjs/common';
 import { LoginUserDto } from './../dtos/login-user.dto';
-import { NotFoundError } from './../../../@application/errors/notFound.error';
 import { UserService } from './../../user/services/user.service';
 
 @Injectable()
@@ -24,7 +23,7 @@ export class AuthLoginService {
       const user: any = await this.userService.findByPhoneNumber(phoneNumber);
       //* Verify User
       if (!user) {
-        throw new NotFoundError('User Not Exist');
+        throw new Error('User Not Exist');
       }
 
       //*Verify Password
@@ -33,7 +32,7 @@ export class AuthLoginService {
         user.password,
       );
       if (isPasswordValid === false) {
-        throw new NotFoundError(`Password Not matched`);
+        throw new Error(`Password Not matched`);
       }
 
       //* Generated Access Token
@@ -43,7 +42,7 @@ export class AuthLoginService {
         token,
       };
     } catch (error) {
-      throw new NotFoundError(error.message);
+      throw new Error(error.message);
     }
   }
 }

@@ -1,7 +1,7 @@
 import { InsertResult, Repository } from 'typeorm';
 
-import { ApiErrorException } from './../errors/api-error.exception';
-import { NotFoundError } from '@application/errors/notFound.error';
+import { ApiErrorException } from '../exceptions/api-error.exception';
+import { NotFoundException } from '@nestjs/common';
 
 export abstract class BaseService<Entity> extends Repository<Entity> {
   repository: Repository<Entity>;
@@ -25,14 +25,13 @@ export abstract class BaseService<Entity> extends Repository<Entity> {
   async updateIntoDB(id: string, payload: Entity): Promise<Entity> {
     try {
       await this.repository.update(id, payload);
-      const updatedItem = this.repository.findOne(id);
+      const updatedItem = await this.repository.findOne(id);
+      if (!updatedItem) {
+        throw new NotFoundException('Not Found');
+      }
       return updatedItem;
     } catch (error) {
-      if (error.code === '22P02') {
-        throw new NotFoundError(' Not Found');
-      } else {
-        throw new ApiErrorException(error);
-      }
+      return error;
     }
   }
 }
