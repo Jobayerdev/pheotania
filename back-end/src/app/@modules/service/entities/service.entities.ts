@@ -4,12 +4,16 @@ import { BaseEntity } from '@application/base/base.entity';
 
 @Entity('service')
 export class Service extends BaseEntity {
-  @Column()
-  name: string;
+  public static readonly SEARCH_TERMS = ['name', 'image'];
+  public static readonly ORDERS = ['name', 'createdAt'];
+  public static readonly RELATIONS = [];
 
   @Column()
-  image: string;
+  name?: string;
 
   @Column()
-  overview: string;
+  image?: string;
+
+  @Column()
+  overview?: string;
 }

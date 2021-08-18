@@ -1,10 +1,16 @@
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 
 import { AllExceptionsFilter } from './app/@application/interceptor/exception.filter';
 import { AuthModule } from '@modules/auth/auth.module';
 import { CommonModule } from '@common/common.module';
 import { HelperModule } from '@application/helpers/helper.module';
-import { Module } from '@nestjs/common';
+import { ResponseModifierMiddleware } from './app/@application/middlewares/response-modifier.middleware';
 import { ResponsePlaceholderInterceptor } from '@application/interceptor/response-placeholder.interceptor';
 import { ServiceModule } from './app/@modules/service/service.module';
 import { UserModule } from './app/@modules/user/user.module';
@@ -23,5 +29,11 @@ import { UserModule } from './app/@modules/user/user.module';
     },
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(ResponseModifierMiddleware)
+      .forRoutes({ path: '*', method: RequestMethod.ALL });
+  }
+}
 // 01713606032

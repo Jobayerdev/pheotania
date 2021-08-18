@@ -3,7 +3,6 @@ https://docs.nestjs.com/providers#services
 */
 import { BcryptHelper } from '@application/helpers/bcrypt.helper';
 import { JWTHelper } from '@application/helpers/jwt.helper';
-import { errorPlaceholder } from '@application/utils/responsePlaceholder.util';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDTO } from '../dtos/createUser.dto';
@@ -37,9 +36,9 @@ export class UserService {
       };
     } catch (err) {
       if (err.code === '23505') {
-        return errorPlaceholder('UserAlreadyExistError', 'User Already Exist');
+        return 'UserAlreadyExistError';
       } else {
-        return errorPlaceholder('UserRegisterFailedError', err.message);
+        return 'UserRegisterFailedError';
       }
     }
   }

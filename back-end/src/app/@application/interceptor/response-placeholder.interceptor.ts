@@ -9,7 +9,6 @@ import {
 import { Observable, map } from 'rxjs';
 
 import { methodSuccessMessage } from './../utils/responsePlaceholder.util';
-import { successPlaceholder } from '@application/utils/responsePlaceholder.util';
 
 /*
 https://docs.nestjs.com/interceptors#interceptors
@@ -26,9 +25,17 @@ export class ResponsePlaceholderInterceptor implements NestInterceptor {
         if (content instanceof Error) {
           throw content;
         } else if (content) {
-          return successPlaceholder(responseMessage, content);
+          return {
+            success: true,
+            message: responseMessage,
+            payload: content,
+          };
         } else if (typeof content == 'undefined') {
-          return successPlaceholder(responseMessage, null);
+          return {
+            success: false,
+            message: responseMessage,
+            payload: null,
+          };
         } else {
           throw new HttpException('Unknown Error', HttpStatus.BAD_REQUEST);
         }
