@@ -23,7 +23,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     } else if (exception instanceof HttpException) {
       statusCode = exception.getStatus();
       const res: any = exception.getResponse();
-      errorMessage = res.message === 'string' ? [res.message] : res.message;
+      errorMessage = res?.message === 'string' ? [res.message] : res.message;
     } else {
       statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
       errorMessage = errorMessage ? errorMessage : ['Internal Server Error'];

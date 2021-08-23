@@ -17,7 +17,7 @@ export abstract class BaseService<Entity> extends Repository<Entity> {
   async insertIntoDB(payload: Entity): Promise<Entity> {
     try {
       const result: InsertResult = await this.repository.insert(payload);
-      return this.repository.findOne(result.identifiers[0].id);
+      return await this.repository.findOne(result.identifiers[0].id);
     } catch (error) {
       throw new ApiErrorException(error);
     }
