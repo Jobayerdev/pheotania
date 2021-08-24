@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { RoleDTO } from '../dtos/role.dto';
 import { RoleService } from './../services/role.service';
@@ -11,6 +19,11 @@ https://docs.nestjs.com/controllers#controllers
 @Controller('roles')
 export class RoleController {
   constructor(private readonly roleService: RoleService) {}
+
+  @Get('filter')
+  filter() {
+    return this.roleService.filter();
+  }
 
   @Post()
   @ApiBody({ type: RoleDTO })

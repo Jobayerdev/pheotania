@@ -2,7 +2,7 @@ import { BaseService } from '@application/base';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { RolePermission } from './../entities/rol-premission.entity';
+import { RolePermission } from '../entities/role-premission.entity';
 
 /*
 https://docs.nestjs.com/providers#services

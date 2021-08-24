@@ -15,4 +15,9 @@ export class RoleService extends BaseService<Role> {
   ) {
     super(roleRepository, Role.name);
   }
+
+  async filter() {
+    const result = await this.roleRepository.findAndCount({});
+    return result[0];
+  }
 }

@@ -9,3 +9,9 @@ export enum RequestMethods {
   PATCH = 'PATCH',
   DELETE = 'DELETE',
 }
+export enum AppPermissionTypes {
+  VIEW = 'View',
+  CREATE = 'Create',
+  MODIFY = 'Modify',
+  DELETE = 'Delete',
+}

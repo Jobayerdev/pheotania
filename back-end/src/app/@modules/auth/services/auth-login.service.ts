@@ -15,18 +15,13 @@ export class AuthLoginService {
     private readonly jwtHelper: JWTHelper,
     private bcryptHelper: BcryptHelper,
   ) {}
-
   async loginUser(loginUserDto: LoginUserDto) {
     const { password, phoneNumber } = loginUserDto;
     try {
-      //* Get User From DB
       const user: any = await this.userService.findByPhoneNumber(phoneNumber);
-      //* Verify User
       if (!user) {
         throw new Error('User Not Exist');
       }
-
-      //*Verify Password
       const isPasswordValid = await this.bcryptHelper.compareHash(
         password,
         user.password,
@@ -34,13 +29,15 @@ export class AuthLoginService {
       if (isPasswordValid === false) {
         throw new Error(`Password Not matched`);
       }
-
-      //* Generated Access Token
-      const token = await this.jwtHelper.makeAccessToken({ id: user.id });
-      return {
-        auth: true,
-        token,
+      const PERMISSIONS = ['SERVICE_CREATE', 'SERVICE_UPDATE', 'SERVICE_VIEW'];
+      const permissions = await this.jwtHelper.makePermissionToken(PERMISSIONS);
+      delete user?.password;
+      const resPayload = {
+        permissions,
+        ...user,
       };
+      const token = await this.jwtHelper.makeAccessToken(resPayload);
+      return token;
     } catch (error) {
       throw new Error(error.message);
     }
