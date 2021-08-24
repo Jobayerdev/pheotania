@@ -1,6 +1,5 @@
 import { InsertResult, Repository } from 'typeorm';
 
-import { ApiErrorException } from '../exceptions/api-error.exception';
 import { ILIKE } from './../utils/util-functions';
 import { NotFoundException } from '@nestjs/common';
 
@@ -19,7 +18,7 @@ export abstract class BaseService<Entity> extends Repository<Entity> {
       const result: InsertResult = await this.repository.insert(payload);
       return await this.repository.findOne(result.identifiers[0].id);
     } catch (error) {
-      throw new ApiErrorException(error);
+      return error;
     }
   }
 
