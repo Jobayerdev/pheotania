@@ -29,7 +29,8 @@ export class JWTHelper {
 
     const token = await this.sign(configAccess.payload, configAccess.options);
     const tokenData: any = decode(token);
-    return token;
+    const exp = tokenData.exp;
+    return { token, exp };
   }
 
   public async makePermissionToken(permissions: string[]) {

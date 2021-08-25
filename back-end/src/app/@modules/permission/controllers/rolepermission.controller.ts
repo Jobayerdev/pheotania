@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Param, Post, Put } from '@nestjs/common';
 import { ApiProperty, ApiTags } from '@nestjs/swagger';
+import { RolePermissionService } from '../services/role-permission.service';
 import { RolePermissionDTO } from './../dtos/role-permission.dtos';
-import { RolPermissionService } from './../services/rol-permission.service';
 
 /*
 https://docs.nestjs.com/controllers#controllers
@@ -10,7 +10,7 @@ https://docs.nestjs.com/controllers#controllers
 @ApiTags('RolePermissions')
 @Controller('role-permissions')
 export class RolePermissionController {
-  constructor(private service: RolPermissionService) {}
+  constructor(private service: RolePermissionService) {}
 
   @Post()
   @ApiProperty({ type: RolePermissionDTO })

@@ -8,14 +8,13 @@ import {
 
 import { AllExceptionsFilter } from '@application/interceptor/exception.filter';
 import { AppEventModule } from '@application/events/appevent.module';
-import { AuthMiddleware } from '@application/middlewares/auth.middleware';
 import { AuthModule } from '@modules/auth/auth.module';
 import { CommonModule } from '@common/common.module';
+import { FilterResponseInterceptor } from './app/@application/interceptor/filterResponse.interceptor';
 import { HelperModule } from '@application/helpers/helper.module';
 import { PermissionGuard } from './app/@application/guards/permission.guard';
 import { PermissionModule } from '@modules/permission/permission.module';
 import { ResponseModifierMiddleware } from '@application/middlewares/response-modifier.middleware';
-import { ResponsePlaceholderInterceptor } from '@application/interceptor/response-placeholder.interceptor';
 import { ServiceModule } from '@modules/service/service.module';
 import { UserModule } from '@modules/user/user.module';
 
@@ -28,6 +27,7 @@ import { UserModule } from '@modules/user/user.module';
     HelperModule,
     CommonModule,
     AuthModule,
+    AppEventModule,
   ],
   controllers: [],
   providers: [
@@ -37,7 +37,7 @@ import { UserModule } from '@modules/user/user.module';
     },
     {
       provide: APP_INTERCEPTOR,
-      useClass: ResponsePlaceholderInterceptor,
+      useClass: FilterResponseInterceptor,
     },
     {
       provide: APP_GUARD,
@@ -50,18 +50,18 @@ export class AppModule implements NestModule {
     consumer
       .apply(ResponseModifierMiddleware)
       .forRoutes({ path: '*', method: RequestMethod.ALL });
-    consumer
-      .apply(AuthMiddleware)
-      .exclude(
-        {
-          path: '/api/v1/auth/login',
-          method: RequestMethod.POST,
-        },
-        {
-          path: '/api/v1/auth/register',
-          method: RequestMethod.POST,
-        },
-      )
-      .forRoutes('*');
+    // consumer
+    //   .apply(AuthMiddleware)
+    //   .exclude(
+    //     {
+    //       path: '/api/v1/auth/login',
+    //       method: RequestMethod.POST,
+    //     },
+    //     {
+    //       path: '/api/v1/auth/register',
+    //       method: RequestMethod.POST,
+    //     },
+    //   )
+    //   .forRoutes('*');
   }
 }

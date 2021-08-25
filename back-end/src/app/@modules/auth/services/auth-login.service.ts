@@ -5,7 +5,8 @@ https://docs.nestjs.com/providers#services
 import { BcryptHelper, JWTHelper } from '@application/helpers';
 
 import { Injectable } from '@nestjs/common';
-import { LoginUserDto } from './../dtos/login-user.dto';
+import { LoginUserDTO } from '../dtos/login-user.dto';
+import { User } from '@modules/user/entities/user.entities';
 import { UserService } from './../../user/services/user.service';
 
 @Injectable()
@@ -15,31 +16,47 @@ export class AuthLoginService {
     private readonly jwtHelper: JWTHelper,
     private bcryptHelper: BcryptHelper,
   ) {}
-  async loginUser(loginUserDto: LoginUserDto) {
-    const { password, phoneNumber } = loginUserDto;
+  async loginUser(payload: LoginUserDTO): Promise<any> {
     try {
-      const user: any = await this.userService.findByPhoneNumber(phoneNumber);
+      const user: User = await this.userService.checkIfUserExist(
+        payload.phoneNumber,
+      );
+
       if (!user) {
         throw new Error('User Not Exist');
       }
-      const isPasswordValid = await this.bcryptHelper.compareHash(
-        password,
+
+      const isPassCorrect = await this.bcryptHelper.compareHash(
+        payload.password,
         user.password,
       );
-      if (isPasswordValid === false) {
-        throw new Error(`Password Not matched`);
+
+      if (!isPassCorrect) {
+        throw new Error('Invalid Password');
       }
-      const PERMISSIONS = ['SERVICE_CREATE', 'SERVICE_UPDATE', 'SERVICE_VIEW'];
-      const permissions = await this.jwtHelper.makePermissionToken(PERMISSIONS);
-      delete user?.password;
-      const resPayload = {
-        permissions,
-        ...user,
-      };
+
+      // const userPermissions = await this.permissionService.getUserPermissions(
+      //   user.id,
+      // );
+      const userPermissions = [
+        'SERVICE_CREATE',
+        'SERVICE_UPDATE',
+        'SERVICE_VIEW',
+      ];
+
+      const permissions = await this.jwtHelper.makePermissionToken(
+        userPermissions,
+      );
+
+      delete user.password;
+
+      const resPayload = { ...user, permissions };
+
       const token = await this.jwtHelper.makeAccessToken(resPayload);
+
       return token;
     } catch (error) {
-      throw new Error(error.message);
+      return error;
     }
   }
 }

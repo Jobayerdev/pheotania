@@ -1,56 +1,36 @@
 /*
 https://docs.nestjs.com/providers#services
 */
-import { BcryptHelper } from '@application/helpers/bcrypt.helper';
-import { JWTHelper } from '@application/helpers/jwt.helper';
+import { BaseService } from '@application/base';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateUserDTO } from '../dtos/createUser.dto';
-import { UserRepository } from './../repositories/user.repository';
+import { Repository } from 'typeorm';
+import { User } from '../entities/user.entities';
 
 @Injectable()
-export class UserService {
+export class UserService extends BaseService<User> {
   constructor(
-    @InjectRepository(UserRepository)
-    private readonly userRepository: UserRepository,
-    private readonly jwtHelper: JWTHelper,
-    private bcryptHelper: BcryptHelper,
-  ) {}
-
-  async create(createUserDto: CreateUserDTO) {
-    const { password, name, phoneNumber } = createUserDto;
-    try {
-      const hashPassword = await this.bcryptHelper.hashString(password);
-      const result = await this.userRepository.insert({
-        password: hashPassword,
-        name,
-        phoneNumber,
-      });
-      const payload = await this.userRepository.findOne(
-        result.identifiers[0].id,
-      );
-      const accessToken = await this.jwtHelper.makeAccessToken(payload);
-      return {
-        auth: true,
-        token: accessToken,
-      };
-    } catch (err) {
-      if (err.code === '23505') {
-        return 'UserAlreadyExistError';
-      } else {
-        return 'UserRegisterFailedError';
-      }
-    }
+    @InjectRepository(User)
+    private readonly service: Repository<User>,
+  ) {
+    super(service, User.name);
   }
-
-  async findByPhoneNumber(phoneNumber: string) {
+  async checkIfUserExist(phoneNumber: string): Promise<User | unknown> {
     try {
-      return this.userRepository.findOne(
+      const isUserExist = await this.getByCriteriaFromDB(
         { phoneNumber },
-        { select: ['phoneNumber', 'password'] },
+        {
+          single: true,
+          selects: ['id', 'phoneNumber', 'name', 'password'],
+        },
       );
+
+      if (isUserExist) {
+        return isUserExist;
+      }
+      return false;
     } catch (error) {
-      throw new Error(error);
+      return error;
     }
   }
 }

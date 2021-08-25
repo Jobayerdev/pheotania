@@ -1,5 +1,3 @@
-import { RequestOptions } from '@application/decorators/requestoptions.decorator';
-import { IOptions } from '@application/interfaces/base.interfaces';
 /*
 https://docs.nestjs.com/controllers#controllers
 */
@@ -11,7 +9,6 @@ import {
   Param,
   Post,
   Put,
-  Query,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiProperty, ApiTags } from '@nestjs/swagger';
 import { PermissionFor } from './../../../@application/decorators/permissionfor.decorator';
@@ -30,11 +27,8 @@ export class ServiceController {
   @Get('filter')
   @PermissionFor(`${ServiceController.NAME}${AppPermissionTypes.VIEW}`)
   @ApiProperty({ type: GetAllServiceDTO })
-  async getAll(
-    @Query() reqPayloads: GetAllServiceDTO,
-    @RequestOptions() reqOptions: IOptions,
-  ) {
-    return this.serviceService.getAllFromDB(reqPayloads);
+  async getAll() {
+    return this.serviceService.filters();
   }
 
   @Post('')

@@ -9,11 +9,13 @@ import { User } from './entities/user.entities';
 import { UserController } from './controllers/user.controller';
 import { UserRepository } from './repositories/user.repository';
 import { UserService } from './services/user.service';
+import { UserSubscriber } from '@application/subscribers/user.subscriber';
 
 const ENTITIES = [User];
 const REPOSITORIES = [UserRepository];
 const SERVICES = [UserService];
 const CONTROLLERS = [UserController];
+const SUBSCRIBER = [UserSubscriber];
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ const CONTROLLERS = [UserController];
     HelperModule,
   ],
   controllers: [...CONTROLLERS],
-  providers: [...SERVICES],
-  exports: [UserService],
+  providers: [...SERVICES, ...SUBSCRIBER],
+  exports: [...SERVICES],
 })
 export class UserModule {}

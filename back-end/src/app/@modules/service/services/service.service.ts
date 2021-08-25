@@ -16,4 +16,10 @@ export class ServiceService extends BaseService<Service> {
   ) {
     super(usersRepository, User.name);
   }
+  async filters() {
+    return this.getByCriteriaFromDB(
+      { name: 'AC Servicing' },
+      { relations: [] },
+    );
+  }
 }

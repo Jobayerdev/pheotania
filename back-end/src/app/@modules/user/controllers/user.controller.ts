@@ -15,6 +15,6 @@ export class UserController {
   @Post('')
   @ApiBody({ type: CreateUserDTO })
   async create(@Body() createUserDto: CreateUserDTO) {
-    return this.userService.create(createUserDto);
+    return this.userService.insertIntoDB(createUserDto);
   }
 }

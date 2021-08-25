@@ -5,6 +5,6 @@ import { ApiProperty } from '@nestjs/swagger';
 export class PermissionTypeDTO {
   @IsString()
   @IsNotEmpty()
-  @ApiProperty({ required: true, example: 'Admin User' })
+  @ApiProperty({ required: true, example: 'UserView' })
   readonly title: string;
 }

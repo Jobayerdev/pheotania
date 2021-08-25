@@ -19,5 +19,5 @@ export class RolePermissionDTO {
   })
   @IsNotEmpty()
   @IsString()
-  permission: string;
+  permission: any;
 }

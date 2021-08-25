@@ -36,4 +36,6 @@ export const ENV = {
   JWT_SECRET: process.env.JWT_SECRET,
   SALT_ROUNDS: process.env.SALT_ROUNDS,
   EXPIRES_IN: process.env.EXPIRES_IN,
+
+  DEFAULT_USER_ROLE: process.env.DEFAULT_USER_ROLE,
 };

@@ -5,6 +5,10 @@ import { PermissionType } from './permissionType.entity';
 
 @Entity('permissions')
 export class Permission extends BaseEntity {
+  public static readonly SEARCH_TERMS = ['title'];
+  public static readonly ORDERS = ['title'];
+  public static readonly RELATIONS = ['permissionType'];
+
   @Column({ unique: true })
   title?: string;
 

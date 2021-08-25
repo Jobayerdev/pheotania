@@ -1,12 +1,15 @@
+import { Module } from '@nestjs/common';
+import { PermissionModule } from '@modules/permission/permission.module';
+import { UserCreatedEvent } from './user/usercreated.event';
+
 /*
 https://docs.nestjs.com/modules
 */
 
-import { Module } from '@nestjs/common';
-
+const EVENTS = [UserCreatedEvent];
 @Module({
-  imports: [],
+  imports: [PermissionModule],
   controllers: [],
-  providers: [],
+  providers: [...EVENTS],
 })
 export class AppEventModule {}
