@@ -78,7 +78,11 @@ export class UsersPageComponent implements OnInit, OnDestroy {
         this.usersService
           .delete(id)
           .pipe(untilDestroyed(this))
-          .subscribe((res: IBaseResponse) => {}),
+          .subscribe((res: IBaseResponse) => {
+            this.response.data = this.response.data.filter(
+              (x: any) => x.id !== id,
+            );
+          }),
     });
   }
   onCurrentPageDataChange(currentPage: number) {

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { ActivatedRoute } from '@angular/router';
-import { PermissionsService } from '@shared/services/permissions/permissions.service';
 import { UsersService } from '@shared/services/users/users.service';
 
 @UntilDestroy()
@@ -24,7 +23,6 @@ export class UserPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UsersService,
-    private permissionService: PermissionsService,
   ) {}
 
   ngOnInit() {
@@ -45,7 +43,6 @@ export class UserPageComponent implements OnInit {
           isActive: res?.payload?.isActive,
           phoneNumber: res?.payload?.phoneNumber,
         };
-        console.log(this.user);
       });
   }
 
