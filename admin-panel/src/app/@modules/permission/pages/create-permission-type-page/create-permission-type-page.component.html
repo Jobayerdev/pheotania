@@ -1,0 +1,24 @@
+<div>
+  <nz-page-header nzBackIcon [nzGhost]="false">
+    <nz-page-header-title>Create Permission Type</nz-page-header-title>
+  </nz-page-header>
+</div>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzRequired nzFor="name">Title</nz-form-label>
+    <nz-form-control [nzSpan]="8" nzErrorTip="Invalid title">
+      <input
+        type="text"
+        nz-input
+        formControlName="title"
+        placeholder="Enter title"
+      />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzSpan]="8" [nzOffset]="4">
+      <button nz-button nzType="primary">Submit</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

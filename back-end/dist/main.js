@@ -7,6 +7,7 @@ const core_1 = require("@nestjs/core");
 const common_1 = require("@nestjs/common");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    app.enableCors({ origin: '*' });
     app.setGlobalPrefix(ENV_1.ENV.API_PREFIX);
     app.useGlobalPipes(new common_1.ValidationPipe({}));
     const options = new swagger_1.DocumentBuilder()
@@ -17,7 +18,8 @@ async function bootstrap() {
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, options);
     swagger_1.SwaggerModule.setup('/docs', app, document);
-    await app.listen(3000);
+    console.log(ENV_1.ENV);
+    await app.listen(process.env.PORT || ENV_1.ENV.port);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

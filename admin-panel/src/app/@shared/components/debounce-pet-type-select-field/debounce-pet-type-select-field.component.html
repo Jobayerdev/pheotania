@@ -1,0 +1,7 @@
+<nz-select (ngModelChange)="selectedUser($event)" style="width: 100%">
+  <nz-option
+    *ngFor="let item of response.data"
+    nzValue="{{ item.id }}"
+    nzLabel="{{ item.name }}"
+  ></nz-option>
+</nz-select>

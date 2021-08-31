@@ -1,0 +1,35 @@
+<div>
+  <nz-page-header nzBackIcon [nzGhost]="false">
+    <nz-page-header-title>Update User</nz-page-header-title>
+  </nz-page-header>
+</div>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzRequired nzFor="name">Name</nz-form-label>
+    <nz-form-control [nzSpan]="8" nzErrorTip="Invalid name">
+      <input
+        type="text"
+        nz-input
+        formControlName="name"
+        placeholder="Enter User name"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzRequired nzFor="email">Email</nz-form-label>
+    <nz-form-control [nzSpan]="8" nzErrorTip="Invalid email">
+      <input
+        type="email"
+        nz-input
+        formControlName="email"
+        placeholder="Enter User email"
+      />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzSpan]="8" [nzOffset]="4">
+      <button nz-button nzType="primary">Submit</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

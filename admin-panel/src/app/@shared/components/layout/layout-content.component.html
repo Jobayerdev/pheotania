@@ -1,0 +1,194 @@
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo">
+      <a [routerLink]="['/']">
+        <img src="../assets/images/poshapets-icon.png" alt="logo" />
+        <h1>Poshapets</h1>
+      </a>
+    </div>
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <li nz-submenu nzTitle="Dashboard" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.defaultDashboard]"
+              routerLinkActive="router-link-active"
+              >Default</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.analyticsDashboard]"
+              routerLinkActive="router-link-active"
+              >Analytical</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Breed" nzIcon="highlight">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.createBreed]"
+              routerLinkActive="router-link-active"
+              >Create new</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.breedList]"
+              routerLinkActive="router-link-active"
+              >List</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Service" nzIcon="sisternode">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.createService]"
+              routerLinkActive="router-link-active"
+              >Create new</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.serviceList]"
+              routerLinkActive="router-link-active"
+              >List</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Pet" nzIcon="deployment-unit">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.createPet]"
+              routerLinkActive="router-link-active"
+              >Create new</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.petList]"
+              routerLinkActive="router-link-active"
+              >List</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Pet Type" nzIcon="deployment-unit">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.createPetType]"
+              routerLinkActive="router-link-active"
+              >Create new</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.petTypeList]"
+              routerLinkActive="router-link-active"
+              >List</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Individuals" nzIcon="user">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.users]"
+              routerLinkActive="router-link-active"
+              >Users</a
+            >
+          </li>
+        </ul>
+      </li>
+
+      <li nz-submenu nzTitle="Access Permissions" nzIcon="lock">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.permissionsRoles]"
+              routerLinkActive="router-link-active"
+            >
+              Roles</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.permissionsTypes]"
+              routerLinkActive="router-link-active"
+            >
+              Permissions Types</a
+            >
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.permissions]"
+              routerLinkActive="router-link-active"
+              >Permissions</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          ></i>
+        </span>
+        <div class="hd-user-actions">
+          <nz-button-group>
+            <button nz-button>{{ userPhoneNumber }}</button>
+            <button
+              nz-button
+              nz-dropdown
+              nzTrigger="click"
+              [nzDropdownMenu]="menu"
+              nzPlacement="bottomRight"
+            >
+              <i nz-icon nzType="user"></i>
+            </button>
+          </nz-button-group>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <main [@fadeInAnimation]="getRouterOutletState(o)">
+          <router-outlet #o="outlet"></router-outlet>
+        </main>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item>My Profile</li>
+    <li nz-menu-item (click)="logout()">Logout</li>
+  </ul>
+</nz-dropdown-menu>

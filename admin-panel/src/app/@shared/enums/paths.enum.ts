@@ -1,0 +1,35 @@
+export enum PathsEnum {
+  root = '/',
+  defaultDashboard = '/admin/dashboard/default/',
+  analyticsDashboard = '/admin/dashboard/analytics/',
+  user = '/admin/users/',
+  users = '/admin/users/list/',
+  customers = '/admin/users/customers/',
+  createUser = '/admin/users/create-user/',
+  updateUser = '/admin/users/update-user/',
+  permissions = '/admin/permissions/list/',
+  permissionsTypes = '/admin/permissions/types/',
+  createPermission = '/admin/permissions/crate-permission/',
+  updatePermission = '/admin/permissions/update-permission/',
+  permissionsRoles = '/admin/permissions/roles/',
+  createPermissionRole = '/admin/permissions/create-role/',
+  updatePermissionRole = '/admin/permissions/update-role/',
+  createPermissionType = '/admin/permissions/create-permission-type/',
+  updatePermissionType = '/admin/permissions/update-permission-type/',
+
+  breedList = '/admin/breed/list/',
+  createBreed = '/admin/breed/create-new/',
+  updateBreed = '/admin/breed/update/',
+
+  serviceList = '/admin/service/list/',
+  createService = '/admin/service/create-new/',
+  updateService = '/admin/service/update/',
+
+  petTypeList = '/admin/petType/list/',
+  createPetType = '/admin/petType/create-new/',
+  updatePetType = '/admin/petType/update/',
+
+  petList = '/admin/pet/list/',
+  createPet = '/admin/pet/create-new/',
+  updatePet = '/admin/pet/update/',
+}

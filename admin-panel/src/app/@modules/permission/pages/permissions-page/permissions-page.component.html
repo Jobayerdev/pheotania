@@ -1,0 +1,51 @@
+<nz-page-header nzBackIcon [nzGhost]="false">
+  <nz-page-header-title>Permissions</nz-page-header-title>
+  <nz-page-header-extra>
+    <!-- <button nz-button>Export</button> -->
+    <button
+      nz-button
+      nzType="primary"
+      [routerLink]="[routePathsEnum.createPermission]"
+      routerLinkActive="router-link-active"
+    >
+      Create new Permission
+    </button>
+  </nz-page-header-extra>
+</nz-page-header>
+<nz-table
+  nzShowPagination
+  [nzFrontPagination]="false"
+  [nzData]="response.data"
+  [nzLoading]="loading"
+  [nzTotal]="response.total"
+  [nzPageSize]="10"
+  [nzPageIndex]="response.page"
+  (nzPageIndexChange)="onCurrentPageDataChange($event)"
+>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>IsActive</th>
+      <th style="text-align: right">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of response.data">
+      <td>{{ data.title }}</td>
+      <td>{{ data.isActive }}</td>
+      <td align="right">
+        <button
+          nz-button
+          nzType="primary"
+          style="margin-right: 10px"
+          routerLink="{{ routePathsEnum.updatePermission + data.id }}"
+        >
+          Edit
+        </button>
+        <button nz-button nzType="primary" nzDanger (click)="onDelete(data.id)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

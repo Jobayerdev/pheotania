@@ -1,0 +1,57 @@
+<nz-page-header nzBackIcon [nzGhost]="false">
+  <nz-page-header-title>Roles</nz-page-header-title>
+  <nz-page-header-extra>
+    <!-- <button nz-button>Export</button> -->
+    <button
+      nz-button
+      nzType="primary"
+      [routerLink]="[routePathsEnum.createPermissionRole]"
+      routerLinkActive="router-link-active"
+    >
+      Create new Role
+    </button>
+  </nz-page-header-extra>
+</nz-page-header>
+<nz-table
+  nzShowPagination
+  [nzFrontPagination]="false"
+  [nzData]="response.data"
+  [nzLoading]="loading"
+  [nzTotal]="response.total"
+  [nzPageSize]="10"
+  [nzPageIndex]="response.page"
+  (nzPageIndexChange)="onCurrentPageDataChange($event)"
+>
+  <thead>
+    <tr>
+      <th style="font-weight: bold">Title</th>
+      <th style="font-weight: bold">IsActive</th>
+      <th style="text-align: right; font-weight: bold">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of response.data">
+      <td>{{ data.title }}</td>
+      <td>{{ data.isActive }}</td>
+      <td align="right">
+        <button
+          nz-button
+          nzType="primary"
+          style="margin-right: 10px"
+          routerLink="{{ routePathsEnum.updatePermissionRole + data.id }}"
+        >
+          Edit
+        </button>
+
+        <a
+          nz-popconfirm
+          nzPopconfirmTitle="Are you sure delete this task?"
+          nzPopconfirmPlacement="bottom"
+          (nzOnConfirm)="onDelete(data.id)"
+        >
+          <button nz-button nzType="primary" nzDanger>Delete</button>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

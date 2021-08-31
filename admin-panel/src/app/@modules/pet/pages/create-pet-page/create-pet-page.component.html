@@ -1,0 +1,64 @@
+<div>
+  <nz-page-header nzBackIcon [nzGhost]="false">
+    <nz-page-header-title>Create Pet</nz-page-header-title>
+  </nz-page-header>
+</div>
+
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="name">Name</nz-form-label>
+    <nz-form-control nzErrorTip="Invalid name">
+      <input
+        type="text"
+        nz-input
+        formControlName="name"
+        placeholder="Enter  name"
+      />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="name">Type</nz-form-label>
+    <nz-form-control nzErrorTip="Invalid type">
+      <nz-radio-group formControlName="type">
+        <label nz-radio-button nzValue="A">Hangzhou</label>
+        <label nz-radio-button nzValue="B">Shanghai</label>
+        <label nz-radio-button nzValue="C">Beijing</label>
+        <label nz-radio-button nzValue="D">Chengdu</label>
+      </nz-radio-group>
+    </nz-form-control>
+  </nz-form-item>
+  <app-debounce-pet-type-select-field></app-debounce-pet-type-select-field>
+
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="name">Image</nz-form-label>
+    <nz-form-control nzErrorTip="Invalid name">
+      <nz-upload
+        class="avatar-uploader"
+        nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        nzName="avatar"
+        nzListType="picture-card"
+        [nzShowUploadList]="false"
+        (nzChange)="onChangeAvatar($event)"
+      >
+        <ng-container *ngIf="!avatarUrl">
+          <i
+            class="upload-icon"
+            nz-icon
+            [nzType]="avatarLoading ? 'loading' : 'plus'"
+          ></i>
+          <div class="ant-upload-text">Upload</div>
+        </ng-container>
+        <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+      </nz-upload>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzOffset]="4">
+      <button nz-button nzType="primary">Submit</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+<!-- [nzBeforeUpload]="beforeUpload" -->
