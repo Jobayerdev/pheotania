@@ -24,14 +24,14 @@ export class UserPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UsersService,
-    private permissionService: PermissionsService
+    private permissionService: PermissionsService,
   ) {}
 
   ngOnInit() {
     const id: any = this.route.snapshot.paramMap.get('id');
     this.userId = id;
     this.getUserById(id);
-    this.getUserPermissionsById(id);
+    // this.getUserPermissionsById(id);
   }
 
   getUserById(id: string) {
@@ -45,15 +45,16 @@ export class UserPageComponent implements OnInit {
           isActive: res?.payload?.isActive,
           phoneNumber: res?.payload?.phoneNumber,
         };
+        console.log(this.user);
       });
   }
 
-  getUserPermissionsById(id: string) {
-    return this.permissionService
-      .userPermissions(id)
-      .pipe(untilDestroyed(this))
-      .subscribe((res: any) => {
-        this.permissions = res?.payload;
-      });
-  }
+  // getUserPermissionsById(id: string) {
+  //   return this.permissionService
+  //     .userPermissions(id)
+  //     .pipe(untilDestroyed(this))
+  //     .subscribe((res: any) => {
+  //       this.permissions = res?.payload;
+  //     });
+  // }
 }

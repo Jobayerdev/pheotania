@@ -26,6 +26,51 @@
       />
     </nz-form-control>
   </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzRequired nzFor="address"
+      >address</nz-form-label
+    >
+    <nz-form-control [nzSpan]="8" nzErrorTip="Invalid address">
+      <input
+        type="text"
+        nz-input
+        formControlName="address"
+        placeholder="Enter User address"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzRequired nzFor="phoneNumber"
+      >Phone Number</nz-form-label
+    >
+    <nz-form-control [nzSpan]="8" nzErrorTip="Invalid phoneNumber">
+      <input
+        type="text"
+        nz-input
+        formControlName="phoneNumber"
+        placeholder="Enter User phoneNumber"
+      />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzRequired nzFor="type">Type</nz-form-label>
+    <nz-form-control [nzSpan]="8" nzErrorTip="Invalid type">
+      <nz-select formControlName="type">
+        <nz-option nzValue="ADMIN" nzLabel="ADMIN"></nz-option>
+        <nz-option nzValue="CUSTOMER" nzLabel="CUSTOMER"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzRequired nzFor="gender">Gender</nz-form-label>
+    <nz-form-control [nzSpan]="8" nzErrorTip="Invalid gender">
+      <nz-select formControlName="gender">
+        <nz-option nzValue="MALE" nzLabel="MALE"></nz-option>
+        <nz-option nzValue="FEMALE" nzLabel="FEMALE"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
 
   <nz-form-item>
     <nz-form-control [nzSpan]="8" [nzOffset]="4">

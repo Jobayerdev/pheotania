@@ -3,14 +3,14 @@ import {
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
-  HttpRequest,
-} from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { isArray, isEmpty } from 'lodash';
+  HttpRequest
+} from '@angular/common/http'
+import { Observable, throwError } from 'rxjs'
+import { catchError, map } from 'rxjs/operators'
+import { isArray, isEmpty } from 'lodash'
 
-import { Injectable } from '@angular/core';
-import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { Injectable } from '@angular/core'
+import { NzNotificationService } from 'ng-zorro-antd/notification'
 
 const dd = {
   headers: {
@@ -48,7 +48,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         return event;
       }),
       catchError((error: HttpErrorResponse) => {
-        const errResponse = error?.error?.errorMessages;
+        const errResponse = error?.error?.errorMessage;
         if (isArray(errResponse) && isEmpty(errResponse) === false) {
           errResponse.map((err: any) => {
             this.notification.error(err, '');

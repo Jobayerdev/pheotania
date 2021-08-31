@@ -54,6 +54,22 @@
     </nz-form-control>
   </nz-form-item>
 
+
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4" nzRequired nzFor="type"
+      >Type</nz-form-label
+    >
+    <nz-form-control [nzSpan]="8" nzErrorTip="Invalid type">
+      <nz-select formControlName="type"
+      
+      >
+        <nz-option nzValue="ADMIN" nzLabel="ADMIN"></nz-option>
+        <nz-option nzValue="CUSTOMER" nzLabel="CUSTOMER"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
   <nz-form-item>
     <nz-form-control [nzSpan]="8" [nzOffset]="4">
       <button nz-button nzType="primary">Submit</button>

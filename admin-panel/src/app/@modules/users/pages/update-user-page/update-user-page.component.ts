@@ -3,9 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { UsersService } from '@shared/services/users/users.service';
-import { updateUserAction } from '@state/users/users.actions';
 
 @UntilDestroy()
 @Component({
@@ -19,9 +18,9 @@ export class UpdateUserPageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store,
     private userService: UsersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private notificationService: NzNotificationService,
   ) {}
 
   ngOnInit(): void {
@@ -31,17 +30,26 @@ export class UpdateUserPageComponent implements OnInit {
     this.validateForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required]],
+      type: ['', [Validators.required]],
+      gender: ['', [Validators.required]],
+      address: ['', [Validators.required]],
     });
   }
 
   submitForm(): void {
+    console.log(this.validateForm.value);
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
     if (this.validateForm.invalid === false) {
-      const { name, email } = this.validateForm.value;
-      this.store.dispatch(updateUserAction({ id: this.userId, name, email }));
+      this.userService
+        .update(this.userId, this.validateForm.value)
+        .pipe(untilDestroyed(this))
+        .subscribe((res) => {
+          this.notificationService.success('Update', '');
+        });
     }
   }
 
@@ -54,6 +62,10 @@ export class UpdateUserPageComponent implements OnInit {
         this.validateForm.setValue({
           name: res.payload.name,
           email: res.payload.email,
+          phoneNumber: res.payload.phoneNumber,
+          type: res.payload.type,
+          gender: res.payload.gender,
+          address: res.payload.address,
         });
       });
   }

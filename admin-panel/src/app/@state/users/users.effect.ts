@@ -6,8 +6,6 @@ import {
   deleteUserSuccessAction,
   loadUsersAction,
   loadUsersSuccessAction,
-  updateUserAction,
-  updateUserSuccessAction,
 } from './users.actions';
 import { map, mergeMap } from 'rxjs/operators';
 
@@ -25,7 +23,7 @@ export class UsersEffects {
     private readonly actions$: Actions,
     private readonly usersService: UsersService,
     private readonly notificationService: NzNotificationService,
-    private readonly routes: Router
+    private readonly routes: Router,
   ) {}
 
   //!load
@@ -43,9 +41,9 @@ export class UsersEffects {
               return loadUsersSuccessAction({
                 payload: response.payload,
               });
-            })
+            }),
           );
-      })
+      }),
     );
   });
 
@@ -58,9 +56,9 @@ export class UsersEffects {
           map(() => {
             this.notificationService.success(StaticEnum.DELETED_SUCCESS, '');
             return deleteUserSuccessAction({ id: action.id });
-          })
+          }),
         );
-      })
+      }),
     );
   });
 
@@ -76,29 +74,29 @@ export class UsersEffects {
               this.routes.navigate([PathsEnum.users]);
             }, 1000);
             return createUserSuccessAction({ data: payload });
-          })
-        )
-      )
+          }),
+        ),
+      ),
     );
   });
 
   //!Update
-  updateUser$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(updateUserAction),
-      mergeMap((action) => {
-        return this.usersService
-          .update(action.id, { name: action.name, email: action.email })
-          .pipe(
-            map((payload: IBaseResponse) => {
-              this.notificationService.success(StaticEnum.UPDATED_SUCCESS, '');
-              setTimeout(() => {
-                this.routes.navigate([PathsEnum.users]);
-              }, 1000);
-              return updateUserSuccessAction(payload);
-            })
-          );
-      })
-    );
-  });
+  // updateUser$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(updateUserAction),
+  //     mergeMap((action) => {
+  //       return this.usersService
+  //         .update(action.id, { name: action.name, email: action.email })
+  //         .pipe(
+  //           map((payload: IBaseResponse) => {
+  //             this.notificationService.success(StaticEnum.UPDATED_SUCCESS, '');
+  //             setTimeout(() => {
+  //               this.routes.navigate([PathsEnum.users]);
+  //             }, 1000);
+  //             return updateUserSuccessAction(payload);
+  //           }),
+  //         );
+  //     }),
+  //   );
+  // });
 }
