@@ -38,6 +38,21 @@ let UserService = class UserService extends base_1.BaseService {
             return error;
         }
     }
+    async createUser(user) {
+        try {
+            const find = await this.getByCriteriaFromDB({
+                phoneNumber: user.phoneNumber,
+                type: user.type,
+            }, {});
+            if (find) {
+                throw new Error('User Already exist');
+            }
+            return await this.insertIntoDB(user);
+        }
+        catch (error) {
+            return error;
+        }
+    }
 };
 UserService = __decorate([
     common_1.Injectable(),

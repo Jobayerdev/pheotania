@@ -5,6 +5,7 @@ import { BaseService } from '@application/base';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { CreateUserDTO } from '../dtos';
 import { User } from '../entities/user.entities';
 
 @Injectable()
@@ -29,6 +30,24 @@ export class UserService extends BaseService<User> {
         return isUserExist;
       }
       return false;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async createUser(user: CreateUserDTO) {
+    try {
+      const find = await this.getByCriteriaFromDB(
+        {
+          phoneNumber: user.phoneNumber,
+          type: user.type,
+        },
+        {},
+      );
+      if (find) {
+        throw new Error('User Already exist');
+      }
+      return await this.insertIntoDB(user);
     } catch (error) {
       return error;
     }

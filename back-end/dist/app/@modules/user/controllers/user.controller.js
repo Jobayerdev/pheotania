@@ -13,26 +13,74 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
+const requestoptions_decorator_1 = require("../../../@application/decorators/requestoptions.decorator");
+const base_interfaces_1 = require("../../../@application/interfaces/base.interfaces");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const createUser_dto_1 = require("./../dtos/createUser.dto");
+const index_1 = require("./../dtos/index");
 const user_service_1 = require("./../services/user.service");
 let UserController = class UserController {
-    constructor(userService) {
-        this.userService = userService;
+    constructor(service) {
+        this.service = service;
     }
-    async create(createUserDto) {
-        return this.userService.insertIntoDB(createUserDto);
+    async getAll(reqOptions, reqPayloads) {
+        return this.service.getAllFromDB(reqPayloads, reqOptions);
+    }
+    async getById(id) {
+        return this.service.getByIdFromDB(id);
+    }
+    async insert(reqOptions, reqPayloads) {
+        return this.service.createUser(reqPayloads);
+    }
+    async update(id, reqPayloads) {
+        return this.service.updateIntoDB(id, reqPayloads);
+    }
+    async delete(id) {
+        return this.service.deleteFromDB(id);
     }
 };
+UserController.NAME = 'User';
 __decorate([
-    common_1.Post(''),
-    swagger_1.ApiBody({ type: createUser_dto_1.CreateUserDTO }),
-    __param(0, common_1.Body()),
+    common_1.Get(),
+    swagger_1.ApiProperty({ type: index_1.GetAllUsersDTO }),
+    __param(0, requestoptions_decorator_1.RequestOptions()),
+    __param(1, common_1.Query()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [createUser_dto_1.CreateUserDTO]),
+    __metadata("design:paramtypes", [Object, index_1.GetAllUsersDTO]),
     __metadata("design:returntype", Promise)
-], UserController.prototype, "create", null);
+], UserController.prototype, "getAll", null);
+__decorate([
+    common_1.Get(':id'),
+    swagger_1.ApiProperty({ type: index_1.GetUserByIdDTO }),
+    __param(0, common_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "getById", null);
+__decorate([
+    common_1.Post(),
+    swagger_1.ApiBody({ type: index_1.CreateUserDTO }),
+    __param(0, requestoptions_decorator_1.RequestOptions()),
+    __param(1, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, index_1.CreateUserDTO]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "insert", null);
+__decorate([
+    common_1.Put(':id'),
+    __param(0, common_1.Param('id')),
+    __param(1, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, index_1.UserUpdateDTO]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "update", null);
+__decorate([
+    common_1.Delete(':id'),
+    __param(0, common_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "delete", null);
 UserController = __decorate([
     swagger_1.ApiTags('User'),
     common_1.Controller('users'),

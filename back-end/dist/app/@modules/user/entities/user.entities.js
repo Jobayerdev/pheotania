@@ -12,10 +12,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const typeorm_1 = require("typeorm");
 const base_entity_1 = require("../../../@application/base/base.entity");
+const class_validator_1 = require("class-validator");
 let User = class User extends base_entity_1.BaseEntity {
 };
+User.SEARCH_TERMS = [
+    'phoneNumber',
+    'name',
+    'email',
+    'type',
+    'gender',
+    'address',
+];
+User.ORDERS = ['name', 'createdAt'];
+User.RELATIONS = [];
 __decorate([
-    typeorm_1.Column({ unique: true }),
+    typeorm_1.Column({ unique: false }),
     __metadata("design:type", String)
 ], User.prototype, "phoneNumber", void 0);
 __decorate([
@@ -23,9 +34,30 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
-    typeorm_1.Column({ nullable: false }),
+    typeorm_1.Column({ nullable: true }),
     __metadata("design:type", String)
 ], User.prototype, "name", void 0);
+__decorate([
+    typeorm_1.Column({ nullable: true, comment: 'CUSTOMER/ADMIN' }),
+    __metadata("design:type", String)
+], User.prototype, "type", void 0);
+__decorate([
+    typeorm_1.Column({ unique: false, nullable: true }),
+    class_validator_1.IsEmail(),
+    __metadata("design:type", String)
+], User.prototype, "email", void 0);
+__decorate([
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", String)
+], User.prototype, "gender", void 0);
+__decorate([
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", String)
+], User.prototype, "address", void 0);
+__decorate([
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", String)
+], User.prototype, "image", void 0);
 User = __decorate([
     typeorm_1.Entity('users')
 ], User);

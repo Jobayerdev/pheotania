@@ -10,8 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUserDTO = void 0;
-const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
+const swagger_1 = require("@nestjs/swagger");
+const index_1 = require("./../enums/index");
 class CreateUserDTO {
 }
 __decorate([
@@ -29,5 +30,15 @@ __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
 ], CreateUserDTO.prototype, "password", void 0);
+__decorate([
+    swagger_1.ApiProperty({
+        required: true,
+        example: index_1.UserType.Customer,
+        description: `${index_1.UserType.Admin}/${index_1.UserType.Customer}`,
+    }),
+    class_validator_1.IsNotEmpty(),
+    class_validator_1.IsIn([index_1.UserType.Admin, index_1.UserType.Customer]),
+    __metadata("design:type", String)
+], CreateUserDTO.prototype, "type", void 0);
 exports.CreateUserDTO = CreateUserDTO;
 //# sourceMappingURL=createUser.dto.js.map
