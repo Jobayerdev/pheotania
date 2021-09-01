@@ -30,7 +30,7 @@ export class PermissionTypesPageComponent implements OnInit {
 
   constructor(
     private permissionTypeService: PermissionTypeService,
-    private notificationService: NzNotificationService
+    private notificationService: NzNotificationService,
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +51,6 @@ export class PermissionTypesPageComponent implements OnInit {
       .filter(options)
       .pipe(untilDestroyed(this))
       .subscribe((res: any) => {
-        this.loading = false;
         this.response = {
           data: res.payload,
           page: options.page,
@@ -59,6 +58,7 @@ export class PermissionTypesPageComponent implements OnInit {
           total: res.total,
         };
       });
+    this.loading = false;
   }
 
   // Delete
@@ -69,7 +69,7 @@ export class PermissionTypesPageComponent implements OnInit {
       .subscribe((res: IBaseResponse) => {
         this.notificationService.success(StaticEnum.DELETED_SUCCESS, '');
         this.response.data = this.response.data.filter(
-          (x: any) => x.id !== res.payload.id
+          (x: any) => x.id !== res.payload.id,
         );
       });
   }

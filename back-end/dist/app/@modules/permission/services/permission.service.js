@@ -34,8 +34,11 @@ let PermissionService = class PermissionService extends base_1.BaseService {
     }
     async getUserPermissions(userId) {
         const userRoles = await this.roleUserService.getAllFromDB({ user: userId }, { relations: ['role'] });
+        console.log('🚀 ~ file: permission.service.ts ~ line 36 ~ PermissionService ~ getUserPermissions ~ userRoles', userRoles);
         const roleIDs = userRoles.data.map((o) => o.role.id);
+        console.log('🚀 ~ file: permission.service.ts ~ line 45 ~ PermissionService ~ getUserPermissions ~ roleIDs', roleIDs);
         const rolePermissions = await this.rolePermissionService.getAllFromDB({ role: typeorm_2.In(roleIDs) }, { relations: ['permission'] });
+        console.log('🚀 ~ file: permission.service.ts ~ line 50 ~ PermissionService ~ getUserPermissions ~ rolePermissions', rolePermissions);
         let permissions = rolePermissions.data.map((o) => o.permission.title);
         const userExtendedPermissions = await this.userPermissionService.getAllFromDB({ user: userId }, { relations: ['permission'] });
         const userExtendedPermissionNames = userExtendedPermissions.data.map((uP) => uP.permission.title);

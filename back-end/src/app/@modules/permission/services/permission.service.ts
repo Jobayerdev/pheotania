@@ -37,12 +37,24 @@ export class PermissionService extends BaseService<Permission> {
         { user: userId as any },
         { relations: ['role'] },
       );
+    console.log(
+      '🚀 ~ file: permission.service.ts ~ line 36 ~ PermissionService ~ getUserPermissions ~ userRoles',
+      userRoles,
+    );
     const roleIDs: string[] = userRoles.data.map((o) => o.role.id);
+    console.log(
+      '🚀 ~ file: permission.service.ts ~ line 45 ~ PermissionService ~ getUserPermissions ~ roleIDs',
+      roleIDs,
+    );
     const rolePermissions: IGetAllFromDBResponse<RolePermission> =
       await this.rolePermissionService.getAllFromDB(
         { role: In(roleIDs) },
         { relations: ['permission'] },
       );
+    console.log(
+      '🚀 ~ file: permission.service.ts ~ line 50 ~ PermissionService ~ getUserPermissions ~ rolePermissions',
+      rolePermissions,
+    );
     let permissions = rolePermissions.data.map((o) => o.permission.title);
     const userExtendedPermissions: IGetAllFromDBResponse<UserExtendedPermission> =
       await this.userPermissionService.getAllFromDB(

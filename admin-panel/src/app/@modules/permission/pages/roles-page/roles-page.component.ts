@@ -51,13 +51,9 @@ export class RolesPageComponent implements OnInit {
       .filter(options)
       .pipe(untilDestroyed(this))
       .subscribe((res: any) => {
-        console.log(
-          '🚀 ~ file: roles-page.component.ts ~ line 54 ~ RolesPageComponent ~ .subscribe ~ res',
-          res,
-        );
         this.loading = false;
         this.response = {
-          data: res.payload?.data,
+          data: res.payload,
           page: options.page,
           take: 10,
           total: res.total,
@@ -72,6 +68,10 @@ export class RolesPageComponent implements OnInit {
       .delete(id)
       .pipe(untilDestroyed(this))
       .subscribe((res: IBaseResponse) => {
+        console.log(
+          '🚀 ~ file: roles-page.component.ts ~ line 71 ~ RolesPageComponent ~ .subscribe ~ res',
+          res,
+        );
         this.notificationService.success(StaticEnum.DELETED_SUCCESS, '');
         this.response.data = this.response.data.filter(
           (x: any) => x.id !== res.payload.id,

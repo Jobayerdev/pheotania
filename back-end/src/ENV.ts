@@ -1,6 +1,6 @@
-import * as path from 'path'
+import * as path from 'path';
 
-import { config } from 'dotenv'
+import { config } from 'dotenv';
 
 config({
   path: path.join(

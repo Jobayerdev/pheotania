@@ -48,7 +48,7 @@ export class PermissionsPageComponent implements OnInit {
       .subscribe((res: any) => {
         this.loading = false;
         this.response = {
-          data: res.payload.data,
+          data: res.payload,
           page: options.page,
           take: 10,
           total: res.total,

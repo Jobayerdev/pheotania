@@ -9,6 +9,7 @@ import { debounceTime, map, switchMap } from 'rxjs/operators';
 
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { PathsEnum } from './../../../../@shared/enums/paths.enum';
+import { PermissionTypeService } from './../../../../@shared/services/permission-type/permissionType.service';
 import { PermissionsService } from '@shared/services/permissions/permissions.service';
 import { Router } from '@angular/router';
 import { StaticEnum } from './../../../../@shared/enums/static.enum';
@@ -32,7 +33,8 @@ export class CreatePermissionPageComponent implements OnInit {
   constructor(
     private permissionsService: PermissionsService,
     private notificationService: NzNotificationService,
-    private router: Router
+    private router: Router,
+    private permissionTypesService: PermissionTypeService,
   ) {}
 
   onSearch(value: string): void {
@@ -57,15 +59,19 @@ export class CreatePermissionPageComponent implements OnInit {
   }
 
   getRandomOptions = (name: string) =>
-    this.permissionsService.filter({ searchTerm: name }).pipe(
+    this.permissionTypesService.filter({ searchTerm: name }).pipe(
       map((list: any) => {
+        console.log(
+          '🚀 ~ file: create-permission-page.component.ts ~ line 62 ~ CreatePermissionPageComponent ~ map ~ list',
+          list,
+        );
         return list.payload.map((item: any) => {
           return {
             label: item.title,
             value: item.id,
           };
         });
-      })
+      }),
     );
 
   submitForm(): void {
@@ -74,9 +80,10 @@ export class CreatePermissionPageComponent implements OnInit {
     } else if (Object.keys(this.selectedOption).length === 0) {
       this.notificationService.error('Invalid Permission Type', '');
     } else {
+      console.log(this.selectedOption);
       this.permissionsService
         .create({
-          permissionType: this.selectedOption?.value,
+          permissionType: this.selectedOption as any,
           title: this.title,
         })
         .pipe(untilDestroyed(this))

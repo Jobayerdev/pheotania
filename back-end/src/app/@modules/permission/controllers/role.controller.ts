@@ -11,16 +11,14 @@ import {
 } from '@nestjs/common';
 import { ApiBody, ApiProperty, ApiTags } from '@nestjs/swagger';
 import { AddUserRoleDTO } from '../dtos/role/add-user-role.dto';
+import { GetRoleByIdDTO } from '../dtos/role/get-by-id.dto';
 import { CreateRoleDTO } from '../dtos/role/insert.dto';
 import { RemoveUserRoleDTO } from '../dtos/role/remove-user-role.dto';
 import { RoleUpdateDTO } from '../dtos/role/update.dto';
+import { Role } from '../entities/role.entity';
 import { RequestOptions } from './../../../@application/decorators/requestoptions.decorator';
 import { GetAllRolesDTO } from './../dtos/role/get-all.dto';
 import { RoleService } from './../services/role.service';
-
-/*
-https://docs.nestjs.com/controllers#controllers
-*/
 
 @ApiTags('Role')
 @Controller('roles')
@@ -34,6 +32,12 @@ export class RoleController {
     @Query() reqPayloads: GetAllRolesDTO,
   ) {
     return this.service.getAllFromDB(reqPayloads, reqOptions);
+  }
+
+  @Get(':id')
+  @ApiProperty({ type: GetRoleByIdDTO })
+  async getById(@Param('id') id: string): Promise<Role> {
+    return this.service.getByIdFromDB(id);
   }
 
   @Get('user-roles/:userId')

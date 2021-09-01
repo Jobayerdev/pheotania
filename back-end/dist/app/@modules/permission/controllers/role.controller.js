@@ -17,6 +17,7 @@ const base_interfaces_1 = require("../../../@application/interfaces/base.interfa
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const add_user_role_dto_1 = require("../dtos/role/add-user-role.dto");
+const get_by_id_dto_1 = require("../dtos/role/get-by-id.dto");
 const insert_dto_1 = require("../dtos/role/insert.dto");
 const remove_user_role_dto_1 = require("../dtos/role/remove-user-role.dto");
 const update_dto_1 = require("../dtos/role/update.dto");
@@ -29,6 +30,9 @@ let RoleController = class RoleController {
     }
     async getAll(reqOptions, reqPayloads) {
         return this.service.getAllFromDB(reqPayloads, reqOptions);
+    }
+    async getById(id) {
+        return this.service.getByIdFromDB(id);
     }
     async getUserRoles(userId) {
         return this.service.getUserRoles(userId);
@@ -58,6 +62,14 @@ __decorate([
     __metadata("design:paramtypes", [Object, get_all_dto_1.GetAllRolesDTO]),
     __metadata("design:returntype", Promise)
 ], RoleController.prototype, "getAll", null);
+__decorate([
+    common_1.Get(':id'),
+    swagger_1.ApiProperty({ type: get_by_id_dto_1.GetRoleByIdDTO }),
+    __param(0, common_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], RoleController.prototype, "getById", null);
 __decorate([
     common_1.Get('user-roles/:userId'),
     __param(0, common_1.Param('userId')),

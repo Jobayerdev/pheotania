@@ -52,7 +52,7 @@ class BaseService extends typeorm_1.Repository {
                 throw new Error('Not Found');
             }
             await this.repository.delete(id);
-            return { message: `${this.entityName} data successfully deleted` };
+            return { message: `${this.entityName} data successfully deleted`, id };
         }
         catch (error) {
             return error;

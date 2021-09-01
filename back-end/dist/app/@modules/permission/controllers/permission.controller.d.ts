@@ -1,18 +1,21 @@
-import { IOptions } from '@application/interfaces/base.interfaces';
+import { IGetAllFromDBResponse, IMessageOnlyResponse, IOptions } from '@application/interfaces/base.interfaces';
 import { AddUserExtendedPermissionDTO } from '../dtos/permission/add-user-permission.dto';
 import { GetAllPermissionsDTO } from '../dtos/permission/get-all.dto';
 import { CreatePermissionDTO } from '../dtos/permission/insert.dto';
 import { RemoveUserExtendedPermissionDTO } from '../dtos/permission/remove-user-permission.dto';
 import { PermissionUpdateDTO } from '../dtos/permission/update.dto';
+import { Permission } from '../entities/permissions.entity';
 import { PermissionService } from '../services/permission.service';
 export declare class PermissionController {
-    private service;
+    private readonly service;
+    private static NAME;
     constructor(service: PermissionService);
-    getUserPermission(userId: string): Promise<string[]>;
-    get(reqOptions: IOptions, reqPayload: GetAllPermissionsDTO): Promise<import("@application/interfaces/base.interfaces").IGetAllFromDBResponse<import("../entities/permissions.entity").Permission>>;
-    create(data: CreatePermissionDTO): Promise<import("../entities/permissions.entity").Permission>;
-    update(data: PermissionUpdateDTO, id: string): Promise<import("../entities/permissions.entity").Permission>;
-    delete(id: string): Promise<any>;
-    addUserExtendedPermissions(userId: string, payload: AddUserExtendedPermissionDTO): Promise<string[]>;
-    removeUserExtendedPermissions(userId: string, payload: RemoveUserExtendedPermissionDTO): Promise<string[]>;
+    getUserPermissions(userId: string): Promise<String[]>;
+    addUserExtendedPermissions(userId: string, payload: AddUserExtendedPermissionDTO): Promise<String[]>;
+    removeUserExtendedPermissions(userId: string, payload: RemoveUserExtendedPermissionDTO): Promise<String[]>;
+    getAll(reqOptions: IOptions, reqPayloads: GetAllPermissionsDTO): Promise<IGetAllFromDBResponse<Permission>>;
+    getById(id: string): Promise<Permission>;
+    insert(reqOptions: IOptions, reqPayloads: CreatePermissionDTO): Promise<Permission>;
+    update(id: string, reqPayloads: PermissionUpdateDTO): Promise<Permission>;
+    delete(id: string): Promise<IMessageOnlyResponse>;
 }
