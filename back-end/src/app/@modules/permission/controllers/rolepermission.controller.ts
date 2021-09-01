@@ -1,7 +1,8 @@
 import { Body, Controller, Delete, Param, Post, Put } from '@nestjs/common';
 import { ApiProperty, ApiTags } from '@nestjs/swagger';
+import { CreateRolePermissionDTO } from '../dtos/rolePermission/insert.dto';
+import { RolePermissionUpdateDTO } from '../dtos/rolePermission/update.dto';
 import { RolePermissionService } from '../services/role-permission.service';
-import { RolePermissionDTO } from './../dtos/role-permission.dtos';
 
 /*
 https://docs.nestjs.com/controllers#controllers
@@ -13,22 +14,21 @@ export class RolePermissionController {
   constructor(private service: RolePermissionService) {}
 
   @Post()
-  @ApiProperty({ type: RolePermissionDTO })
-  create(@Body() rolePermissionDTO: RolePermissionDTO) {
+  @ApiProperty({ type: CreateRolePermissionDTO })
+  create(@Body() rolePermissionDTO: CreateRolePermissionDTO) {
     return this.service.insertIntoDB(rolePermissionDTO);
   }
 
   @Put(':id')
-  @ApiProperty({ type: RolePermissionDTO })
+  @ApiProperty({ type: RolePermissionUpdateDTO })
   update(
     @Param('id') id: string,
-    @Body() rolePermissionDTO: RolePermissionDTO,
+    @Body() rolePermissionDTO: RolePermissionUpdateDTO,
   ) {
     return this.service.updateIntoDB(id, rolePermissionDTO);
   }
 
   @Delete(':id')
-  @ApiProperty({ type: RolePermissionDTO })
   delete(@Param('id') id: string) {
     return this.service.deleteFromDB(id);
   }

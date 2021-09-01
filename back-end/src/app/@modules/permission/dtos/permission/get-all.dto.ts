@@ -1,24 +1,7 @@
-import { IsNotEmpty, IsString } from 'class-validator';
-
 import { ApiProperty } from '@nestjs/swagger';
-import { BaseFilterDTO } from '@application/base';
-import { Permission } from '../entities/permissions.entity';
+import { BaseFilterDTO } from '@application/base/base-filter.dto';
+import { Permission } from '@modules/permission/entities/permissions.entity';
 
-export class PermissionDTO {
-  @ApiProperty({ required: true, example: 'string' })
-  @IsString()
-  @IsNotEmpty()
-  title: string;
-
-  @ApiProperty({
-    required: true,
-    example: '7cd3dc24-d6b9-41a5-9829-1275f48d5dca',
-    type: String,
-  })
-  @IsString()
-  @IsNotEmpty()
-  permissionType: any;
-}
 export class GetAllPermissionsDTO extends BaseFilterDTO {
   @ApiProperty({
     required: false,

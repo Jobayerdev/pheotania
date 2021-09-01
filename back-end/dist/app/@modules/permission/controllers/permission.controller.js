@@ -17,10 +17,12 @@ const requestoptions_decorator_1 = require("../../../@application/decorators/req
 const base_interfaces_1 = require("../../../@application/interfaces/base.interfaces");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const add_user_permission_dto_1 = require("../dtos/add-user-permission.dto");
-const remove_user_permission_dto_1 = require("../dtos/remove-user-permission.dto");
+const add_user_permission_dto_1 = require("../dtos/permission/add-user-permission.dto");
+const get_all_dto_1 = require("../dtos/permission/get-all.dto");
+const insert_dto_1 = require("../dtos/permission/insert.dto");
+const remove_user_permission_dto_1 = require("../dtos/permission/remove-user-permission.dto");
+const update_dto_1 = require("../dtos/permission/update.dto");
 const permission_service_1 = require("../services/permission.service");
-const permission_dots_1 = require("./../dtos/permission.dots");
 let PermissionController = class PermissionController {
     constructor(service) {
         this.service = service;
@@ -56,33 +58,32 @@ __decorate([
 ], PermissionController.prototype, "getUserPermission", null);
 __decorate([
     common_1.Get(),
-    swagger_1.ApiProperty({ type: permission_dots_1.GetAllPermissionsDTO }),
+    swagger_1.ApiProperty({ type: get_all_dto_1.GetAllPermissionsDTO }),
     __param(0, requestoptions_decorator_1.RequestOptions()),
     __param(1, common_1.Query()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, permission_dots_1.GetAllPermissionsDTO]),
+    __metadata("design:paramtypes", [Object, get_all_dto_1.GetAllPermissionsDTO]),
     __metadata("design:returntype", void 0)
 ], PermissionController.prototype, "get", null);
 __decorate([
     common_1.Post(),
-    swagger_1.ApiBody({ type: permission_dots_1.PermissionDTO }),
+    swagger_1.ApiBody({ type: insert_dto_1.CreatePermissionDTO }),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [permission_dots_1.PermissionDTO]),
+    __metadata("design:paramtypes", [insert_dto_1.CreatePermissionDTO]),
     __metadata("design:returntype", void 0)
 ], PermissionController.prototype, "create", null);
 __decorate([
     common_1.Put(':id'),
-    swagger_1.ApiBody({ type: permission_dots_1.PermissionDTO }),
+    swagger_1.ApiBody({ type: update_dto_1.PermissionUpdateDTO }),
     __param(0, common_1.Body()),
     __param(1, common_1.Param('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [permission_dots_1.PermissionDTO, String]),
+    __metadata("design:paramtypes", [update_dto_1.PermissionUpdateDTO, String]),
     __metadata("design:returntype", void 0)
 ], PermissionController.prototype, "update", null);
 __decorate([
     common_1.Delete(':id'),
-    swagger_1.ApiBody({ type: permission_dots_1.PermissionDTO }),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

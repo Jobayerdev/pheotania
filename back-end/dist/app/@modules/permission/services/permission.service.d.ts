@@ -1,7 +1,7 @@
 import { BaseService } from '@application/base';
 import { Repository } from 'typeorm';
-import { AddUserExtendedPermissionDTO } from '../dtos/add-user-permission.dto';
-import { RemoveUserExtendedPermissionDTO } from '../dtos/remove-user-permission.dto';
+import { AddUserExtendedPermissionDTO } from '../dtos/permission/add-user-permission.dto';
+import { RemoveUserExtendedPermissionDTO } from '../dtos/permission/remove-user-permission.dto';
 import { Permission } from './../entities/permissions.entity';
 import { RolePermissionService } from './role-permission.service';
 import { RoleUserService } from './role-user.service';

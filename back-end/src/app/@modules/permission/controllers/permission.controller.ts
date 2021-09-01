@@ -11,10 +11,12 @@ import {
   Query,
 } from '@nestjs/common';
 import { ApiBody, ApiProperty, ApiTags } from '@nestjs/swagger';
-import { AddUserExtendedPermissionDTO } from '../dtos/add-user-permission.dto';
-import { RemoveUserExtendedPermissionDTO } from '../dtos/remove-user-permission.dto';
+import { AddUserExtendedPermissionDTO } from '../dtos/permission/add-user-permission.dto';
+import { GetAllPermissionsDTO } from '../dtos/permission/get-all.dto';
+import { CreatePermissionDTO } from '../dtos/permission/insert.dto';
+import { RemoveUserExtendedPermissionDTO } from '../dtos/permission/remove-user-permission.dto';
+import { PermissionUpdateDTO } from '../dtos/permission/update.dto';
 import { PermissionService } from '../services/permission.service';
-import { GetAllPermissionsDTO, PermissionDTO } from './../dtos/permission.dots';
 
 @ApiTags('Permissions')
 @Controller('permissions')
@@ -36,19 +38,18 @@ export class PermissionController {
   }
 
   @Post()
-  @ApiBody({ type: PermissionDTO })
-  create(@Body() data: PermissionDTO) {
+  @ApiBody({ type: CreatePermissionDTO })
+  create(@Body() data: CreatePermissionDTO) {
     return this.service.insertIntoDB(data);
   }
 
   @Put(':id')
-  @ApiBody({ type: PermissionDTO })
-  update(@Body() data: PermissionDTO, @Param('id') id: string) {
+  @ApiBody({ type: PermissionUpdateDTO })
+  update(@Body() data: PermissionUpdateDTO, @Param('id') id: string) {
     return this.service.updateIntoDB(id, data);
   }
 
   @Delete(':id')
-  @ApiBody({ type: PermissionDTO })
   delete(@Param('id') id: string) {
     return this.service.deleteFromDB(id);
   }

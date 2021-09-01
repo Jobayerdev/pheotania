@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Param, Post, Put } from '@nestjs/common';
 import { ApiBody, ApiTags } from '@nestjs/swagger';
-import { PermissionTypeDTO } from './../dtos/permissionType.dto';
+import { CreatePermissionTypeDTO } from '../dtos/permissionType/insert.dto';
+import { PermissionTypeUpdateDTO } from '../dtos/permissionType/update.dto';
 import { PermissionTypeService } from './../services/permissionType.service';
 
 /*
@@ -13,15 +14,15 @@ export class PermissionTypeController {
   constructor(private readonly service: PermissionTypeService) {}
 
   @Post()
-  @ApiBody({ type: PermissionTypeDTO })
-  create(@Body() createPermissionTypeDTO: PermissionTypeDTO) {
+  @ApiBody({ type: CreatePermissionTypeDTO })
+  create(@Body() createPermissionTypeDTO: CreatePermissionTypeDTO) {
     return this.service.insertIntoDB(createPermissionTypeDTO);
   }
 
   @Put(':id')
-  @ApiBody({ type: PermissionTypeDTO })
+  @ApiBody({ type: PermissionTypeUpdateDTO })
   update(
-    @Body() createPermissionTypeDTO: PermissionTypeDTO,
+    @Body() createPermissionTypeDTO: PermissionTypeUpdateDTO,
     @Param('id') id: string,
   ) {
     return this.service.updateIntoDB(id, createPermissionTypeDTO);

@@ -30,7 +30,7 @@ export class RolesPageComponent implements OnInit {
 
   constructor(
     private roleService: RoleService,
-    private notificationService: NzNotificationService
+    private notificationService: NzNotificationService,
   ) {}
   ngOnInit(): void {
     this.loadData({ page: 1, take: 10 });
@@ -51,6 +51,10 @@ export class RolesPageComponent implements OnInit {
       .filter(options)
       .pipe(untilDestroyed(this))
       .subscribe((res: any) => {
+        console.log(
+          '🚀 ~ file: roles-page.component.ts ~ line 54 ~ RolesPageComponent ~ .subscribe ~ res',
+          res,
+        );
         this.loading = false;
         this.response = {
           data: res.payload?.data,
@@ -70,7 +74,7 @@ export class RolesPageComponent implements OnInit {
       .subscribe((res: IBaseResponse) => {
         this.notificationService.success(StaticEnum.DELETED_SUCCESS, '');
         this.response.data = this.response.data.filter(
-          (x: any) => x.id !== res.payload.id
+          (x: any) => x.id !== res.payload.id,
         );
       });
   }

@@ -15,7 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PermissionTypeController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const permissionType_dto_1 = require("./../dtos/permissionType.dto");
+const insert_dto_1 = require("../dtos/permissionType/insert.dto");
+const update_dto_1 = require("../dtos/permissionType/update.dto");
 const permissionType_service_1 = require("./../services/permissionType.service");
 let PermissionTypeController = class PermissionTypeController {
     constructor(service) {
@@ -33,19 +34,19 @@ let PermissionTypeController = class PermissionTypeController {
 };
 __decorate([
     common_1.Post(),
-    swagger_1.ApiBody({ type: permissionType_dto_1.PermissionTypeDTO }),
+    swagger_1.ApiBody({ type: insert_dto_1.CreatePermissionTypeDTO }),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [permissionType_dto_1.PermissionTypeDTO]),
+    __metadata("design:paramtypes", [insert_dto_1.CreatePermissionTypeDTO]),
     __metadata("design:returntype", void 0)
 ], PermissionTypeController.prototype, "create", null);
 __decorate([
     common_1.Put(':id'),
-    swagger_1.ApiBody({ type: permissionType_dto_1.PermissionTypeDTO }),
+    swagger_1.ApiBody({ type: update_dto_1.PermissionTypeUpdateDTO }),
     __param(0, common_1.Body()),
     __param(1, common_1.Param('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [permissionType_dto_1.PermissionTypeDTO, String]),
+    __metadata("design:paramtypes", [update_dto_1.PermissionTypeUpdateDTO, String]),
     __metadata("design:returntype", void 0)
 ], PermissionTypeController.prototype, "update", null);
 __decorate([

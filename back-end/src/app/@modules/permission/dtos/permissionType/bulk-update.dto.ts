@@ -1,0 +1,9 @@
+import { ApiProperty } from '@nestjs/swagger';
+
+export class PermissionTypeBulkUpdateDTO {
+  @ApiProperty({ required: true, example: ['id1', 'id2'] })
+  readonly ids: string[];
+
+  @ApiProperty({ required: false })
+  readonly title: string;
+}

@@ -1,3 +1,4 @@
+import { IOptions } from '@application/interfaces/base.interfaces';
 import {
   Body,
   Controller,
@@ -6,11 +7,15 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
-import { ApiBody, ApiTags } from '@nestjs/swagger';
-import { AddUserRoleDTO } from '../dtos/add-user-role.dto';
-import { RemoveUserRoleDTO } from '../dtos/remove-user-role.dto';
-import { RoleDTO } from '../dtos/role.dto';
+import { ApiBody, ApiProperty, ApiTags } from '@nestjs/swagger';
+import { AddUserRoleDTO } from '../dtos/role/add-user-role.dto';
+import { CreateRoleDTO } from '../dtos/role/insert.dto';
+import { RemoveUserRoleDTO } from '../dtos/role/remove-user-role.dto';
+import { RoleUpdateDTO } from '../dtos/role/update.dto';
+import { RequestOptions } from './../../../@application/decorators/requestoptions.decorator';
+import { GetAllRolesDTO } from './../dtos/role/get-all.dto';
 import { RoleService } from './../services/role.service';
 
 /*
@@ -21,6 +26,15 @@ https://docs.nestjs.com/controllers#controllers
 @Controller('roles')
 export class RoleController {
   constructor(private readonly service: RoleService) {}
+
+  @Get()
+  @ApiProperty({ example: GetAllRolesDTO })
+  async getAll(
+    @RequestOptions() reqOptions: IOptions,
+    @Query() reqPayloads: GetAllRolesDTO,
+  ) {
+    return this.service.getAllFromDB(reqPayloads, reqOptions);
+  }
 
   @Get('user-roles/:userId')
   async getUserRoles(@Param('userId') userId: string): Promise<string[]> {
@@ -36,8 +50,8 @@ export class RoleController {
   }
 
   @Post()
-  @ApiBody({ type: RoleDTO })
-  create(@Body() createRoleDTO: RoleDTO) {
+  @ApiBody({ type: CreateRoleDTO })
+  create(@Body() createRoleDTO: CreateRoleDTO) {
     return this.service.insertIntoDB(createRoleDTO);
   }
 
@@ -50,8 +64,8 @@ export class RoleController {
   }
 
   @Put(':id')
-  @ApiBody({ type: RoleDTO })
-  update(@Body() createRoleDTO: RoleDTO, @Param('id') id: string) {
+  @ApiBody({ type: RoleUpdateDTO })
+  update(@Body() createRoleDTO: RoleUpdateDTO, @Param('id') id: string) {
     return this.service.updateIntoDB(id, createRoleDTO);
   }
   @Delete(':id')

@@ -1,7 +1,7 @@
 import { BaseService } from '@application/base';
 import { Repository } from 'typeorm';
-import { AddUserRoleDTO } from '../dtos/add-user-role.dto';
-import { RemoveUserRoleDTO } from '../dtos/remove-user-role.dto';
+import { AddUserRoleDTO } from '../dtos/role/add-user-role.dto';
+import { RemoveUserRoleDTO } from '../dtos/role/remove-user-role.dto';
 import { Role } from './../entities/role.entity';
 import { RoleUserService } from './role-user.service';
 export declare class RoleService extends BaseService<Role> {

@@ -13,15 +13,22 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RoleController = void 0;
+const base_interfaces_1 = require("../../../@application/interfaces/base.interfaces");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const add_user_role_dto_1 = require("../dtos/add-user-role.dto");
-const remove_user_role_dto_1 = require("../dtos/remove-user-role.dto");
-const role_dto_1 = require("../dtos/role.dto");
+const add_user_role_dto_1 = require("../dtos/role/add-user-role.dto");
+const insert_dto_1 = require("../dtos/role/insert.dto");
+const remove_user_role_dto_1 = require("../dtos/role/remove-user-role.dto");
+const update_dto_1 = require("../dtos/role/update.dto");
+const requestoptions_decorator_1 = require("./../../../@application/decorators/requestoptions.decorator");
+const get_all_dto_1 = require("./../dtos/role/get-all.dto");
 const role_service_1 = require("./../services/role.service");
 let RoleController = class RoleController {
     constructor(service) {
         this.service = service;
+    }
+    async getAll(reqOptions, reqPayloads) {
+        return this.service.getAllFromDB(reqPayloads, reqOptions);
     }
     async getUserRoles(userId) {
         return this.service.getUserRoles(userId);
@@ -43,6 +50,15 @@ let RoleController = class RoleController {
     }
 };
 __decorate([
+    common_1.Get(),
+    swagger_1.ApiProperty({ example: get_all_dto_1.GetAllRolesDTO }),
+    __param(0, requestoptions_decorator_1.RequestOptions()),
+    __param(1, common_1.Query()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, get_all_dto_1.GetAllRolesDTO]),
+    __metadata("design:returntype", Promise)
+], RoleController.prototype, "getAll", null);
+__decorate([
     common_1.Get('user-roles/:userId'),
     __param(0, common_1.Param('userId')),
     __metadata("design:type", Function),
@@ -59,10 +75,10 @@ __decorate([
 ], RoleController.prototype, "addUserRoles", null);
 __decorate([
     common_1.Post(),
-    swagger_1.ApiBody({ type: role_dto_1.RoleDTO }),
+    swagger_1.ApiBody({ type: insert_dto_1.CreateRoleDTO }),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [role_dto_1.RoleDTO]),
+    __metadata("design:paramtypes", [insert_dto_1.CreateRoleDTO]),
     __metadata("design:returntype", void 0)
 ], RoleController.prototype, "create", null);
 __decorate([
@@ -75,11 +91,11 @@ __decorate([
 ], RoleController.prototype, "removeUserRoles", null);
 __decorate([
     common_1.Put(':id'),
-    swagger_1.ApiBody({ type: role_dto_1.RoleDTO }),
+    swagger_1.ApiBody({ type: update_dto_1.RoleUpdateDTO }),
     __param(0, common_1.Body()),
     __param(1, common_1.Param('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [role_dto_1.RoleDTO, String]),
+    __metadata("design:paramtypes", [update_dto_1.RoleUpdateDTO, String]),
     __metadata("design:returntype", void 0)
 ], RoleController.prototype, "update", null);
 __decorate([

@@ -6,8 +6,8 @@ https://docs.nestjs.com/providers#services
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
-import { AddUserExtendedPermissionDTO } from '../dtos/add-user-permission.dto';
-import { RemoveUserExtendedPermissionDTO } from '../dtos/remove-user-permission.dto';
+import { AddUserExtendedPermissionDTO } from '../dtos/permission/add-user-permission.dto';
+import { RemoveUserExtendedPermissionDTO } from '../dtos/permission/remove-user-permission.dto';
 import { UserExtendedPermission } from '../entities/userExtendedPermission.entity';
 import { IGetAllFromDBResponse } from './../../../@application/interfaces/base.interfaces';
 import { Permission } from './../entities/permissions.entity';

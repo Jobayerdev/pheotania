@@ -15,8 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RolePermissionController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
+const insert_dto_1 = require("../dtos/rolePermission/insert.dto");
+const update_dto_1 = require("../dtos/rolePermission/update.dto");
 const role_permission_service_1 = require("../services/role-permission.service");
-const role_permission_dtos_1 = require("./../dtos/role-permission.dtos");
 let RolePermissionController = class RolePermissionController {
     constructor(service) {
         this.service = service;
@@ -33,24 +34,23 @@ let RolePermissionController = class RolePermissionController {
 };
 __decorate([
     common_1.Post(),
-    swagger_1.ApiProperty({ type: role_permission_dtos_1.RolePermissionDTO }),
+    swagger_1.ApiProperty({ type: insert_dto_1.CreateRolePermissionDTO }),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [role_permission_dtos_1.RolePermissionDTO]),
+    __metadata("design:paramtypes", [insert_dto_1.CreateRolePermissionDTO]),
     __metadata("design:returntype", void 0)
 ], RolePermissionController.prototype, "create", null);
 __decorate([
     common_1.Put(':id'),
-    swagger_1.ApiProperty({ type: role_permission_dtos_1.RolePermissionDTO }),
+    swagger_1.ApiProperty({ type: update_dto_1.RolePermissionUpdateDTO }),
     __param(0, common_1.Param('id')),
     __param(1, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, role_permission_dtos_1.RolePermissionDTO]),
+    __metadata("design:paramtypes", [String, update_dto_1.RolePermissionUpdateDTO]),
     __metadata("design:returntype", void 0)
 ], RolePermissionController.prototype, "update", null);
 __decorate([
     common_1.Delete(':id'),
-    swagger_1.ApiProperty({ type: role_permission_dtos_1.RolePermissionDTO }),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
