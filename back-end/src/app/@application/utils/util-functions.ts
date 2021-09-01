@@ -47,3 +47,13 @@ export const asyncForEach = async (array: any[], callback: any) => {
     await callback(array[index], index, array);
   }
 };
+export const getRandomString = (length) => {
+  var randomChars = '0123456789';
+  var result = '';
+  for (var i = 0; i < length; i++) {
+    result += randomChars.charAt(
+      Math.floor(Math.random() * randomChars.length),
+    );
+  }
+  return result;
+};

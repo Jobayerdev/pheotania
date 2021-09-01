@@ -18,6 +18,7 @@ const helper_module_1 = require("./app/@application/helpers/helper.module");
 const permission_guard_1 = require("./app/@application/guards/permission.guard");
 const permission_module_1 = require("./app/@modules/permission/permission.module");
 const response_modifier_middleware_1 = require("./app/@application/middlewares/response-modifier.middleware");
+const service_module_1 = require("./app/@modules/service/service.module");
 const user_module_1 = require("./app/@modules/user/user.module");
 let AppModule = class AppModule {
     configure(consumer) {
@@ -29,6 +30,7 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     common_1.Module({
         imports: [
+            service_module_1.ServiceModule,
             appevent_module_1.AppEventModule,
             permission_module_1.PermissionModule,
             user_module_1.UserModule,

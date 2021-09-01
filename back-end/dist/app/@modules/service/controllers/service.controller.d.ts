@@ -1,12 +1,14 @@
-import { CreateServiceDTO } from './../dtos/create-service.dto';
+import { IGetAllFromDBResponse, IMessageOnlyResponse, IOptions } from '@application/interfaces/base.interfaces';
+import { ServiceDTO } from '../dtos/service.dtos';
+import { Service } from '../entities/service.entity';
+import { GetAllServiceDTO } from './../dtos/service.dtos';
 import { ServiceService } from './../services/service.service';
 export declare class ServiceController {
-    private serviceService;
-    private static NAME;
-    constructor(serviceService: ServiceService);
-    getAll(): Promise<import("../entities/service.entities").Service>;
-    create(createServiceDto: CreateServiceDTO): Promise<import("../entities/service.entities").Service>;
-    update(id: string, createServiceDto: CreateServiceDTO): Promise<import("../entities/service.entities").Service>;
-    delete(id: string): Promise<any>;
-    getById(id: string): Promise<import("../entities/service.entities").Service>;
+    private service;
+    constructor(service: ServiceService);
+    getAll(reqOptions: IOptions, reqPayloads: GetAllServiceDTO): Promise<IGetAllFromDBResponse<Service>>;
+    getById(id: string): Promise<Service>;
+    insert(reqOptions: IOptions, reqPayloads: ServiceDTO): Promise<Service>;
+    update(id: string, reqPayloads: ServiceDTO): Promise<Service>;
+    delete(id: string): Promise<IMessageOnlyResponse>;
 }

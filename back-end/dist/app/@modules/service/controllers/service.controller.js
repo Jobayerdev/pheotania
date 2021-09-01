@@ -11,61 +11,69 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var ServiceController_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ServiceController = void 0;
+const requestoptions_decorator_1 = require("../../../@application/decorators/requestoptions.decorator");
+const base_interfaces_1 = require("../../../@application/interfaces/base.interfaces");
+const dtos_1 = require("../../user/dtos");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const permissionfor_decorator_1 = require("./../../../@application/decorators/permissionfor.decorator");
-const base_enums_1 = require("./../../../@application/enums/base.enums");
-const create_service_dto_1 = require("./../dtos/create-service.dto");
-const get_all_dto_1 = require("./../dtos/get-all.dto");
+const service_dtos_1 = require("../dtos/service.dtos");
+const service_dtos_2 = require("./../dtos/service.dtos");
 const service_service_1 = require("./../services/service.service");
-let ServiceController = ServiceController_1 = class ServiceController {
-    constructor(serviceService) {
-        this.serviceService = serviceService;
+let ServiceController = class ServiceController {
+    constructor(service) {
+        this.service = service;
     }
-    async getAll() {
-        return this.serviceService.filters();
-    }
-    async create(createServiceDto) {
-        return this.serviceService.insertIntoDB(createServiceDto);
-    }
-    async update(id, createServiceDto) {
-        return this.serviceService.updateIntoDB(id.trim(), createServiceDto);
-    }
-    async delete(id) {
-        return this.serviceService.deleteFromDB(id.trim());
+    async getAll(reqOptions, reqPayloads) {
+        return this.service.getAllFromDB(reqPayloads, reqOptions);
     }
     async getById(id) {
-        return this.serviceService.getByIdFromDB(id.trim());
+        return this.service.getByIdFromDB(id);
+    }
+    async insert(reqOptions, reqPayloads) {
+        return this.service.insertIntoDB(reqPayloads);
+    }
+    async update(id, reqPayloads) {
+        return this.service.updateIntoDB(id, reqPayloads);
+    }
+    async delete(id) {
+        return this.service.deleteFromDB(id);
     }
 };
-ServiceController.NAME = 'Service';
 __decorate([
-    common_1.Get('filter'),
-    permissionfor_decorator_1.PermissionFor(`${ServiceController_1.NAME}${base_enums_1.AppPermissionTypes.VIEW}`),
-    swagger_1.ApiProperty({ type: get_all_dto_1.GetAllServiceDTO }),
+    common_1.Get(),
+    swagger_1.ApiProperty({ type: dtos_1.GetAllUsersDTO }),
+    __param(0, requestoptions_decorator_1.RequestOptions()),
+    __param(1, common_1.Query()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object, service_dtos_2.GetAllServiceDTO]),
     __metadata("design:returntype", Promise)
 ], ServiceController.prototype, "getAll", null);
 __decorate([
-    common_1.Post(''),
-    swagger_1.ApiBody({ type: create_service_dto_1.CreateServiceDTO }),
-    permissionfor_decorator_1.PermissionFor(`${ServiceController_1.NAME}${base_enums_1.AppPermissionTypes.CREATE}`),
-    __param(0, common_1.Body()),
+    common_1.Get(':id'),
+    swagger_1.ApiProperty({ type: dtos_1.GetUserByIdDTO }),
+    __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_service_dto_1.CreateServiceDTO]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], ServiceController.prototype, "create", null);
+], ServiceController.prototype, "getById", null);
+__decorate([
+    common_1.Post(),
+    swagger_1.ApiBody({ type: service_dtos_1.ServiceDTO }),
+    __param(0, requestoptions_decorator_1.RequestOptions()),
+    __param(1, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, service_dtos_1.ServiceDTO]),
+    __metadata("design:returntype", Promise)
+], ServiceController.prototype, "insert", null);
 __decorate([
     common_1.Put(':id'),
-    swagger_1.ApiBody({ type: create_service_dto_1.CreateServiceDTO }),
+    swagger_1.ApiBody({ type: service_dtos_1.ServiceDTO }),
     __param(0, common_1.Param('id')),
     __param(1, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, create_service_dto_1.CreateServiceDTO]),
+    __metadata("design:paramtypes", [String, service_dtos_1.ServiceDTO]),
     __metadata("design:returntype", Promise)
 ], ServiceController.prototype, "update", null);
 __decorate([
@@ -75,17 +83,9 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ServiceController.prototype, "delete", null);
-__decorate([
-    common_1.Get(':id'),
-    __param(0, common_1.Param('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], ServiceController.prototype, "getById", null);
-ServiceController = ServiceController_1 = __decorate([
-    swagger_1.ApiBearerAuth(),
+ServiceController = __decorate([
     swagger_1.ApiTags('Service'),
-    common_1.Controller('service'),
+    common_1.Controller('services'),
     __metadata("design:paramtypes", [service_service_1.ServiceService])
 ], ServiceController);
 exports.ServiceController = ServiceController;

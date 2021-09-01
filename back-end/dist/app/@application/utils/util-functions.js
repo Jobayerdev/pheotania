@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.asyncForEach = exports.getEntityProperties = exports.extractToken = exports.ILIKE = void 0;
+exports.getRandomString = exports.asyncForEach = exports.getEntityProperties = exports.extractToken = exports.ILIKE = void 0;
 const typeorm_1 = require("typeorm");
 const base_interfaces_1 = require("../interfaces/base.interfaces");
 const ILIKE = (searchterm) => {
@@ -41,4 +41,13 @@ const asyncForEach = async (array, callback) => {
     }
 };
 exports.asyncForEach = asyncForEach;
+const getRandomString = (length) => {
+    var randomChars = '0123456789';
+    var result = '';
+    for (var i = 0; i < length; i++) {
+        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+    }
+    return result;
+};
+exports.getRandomString = getRandomString;
 //# sourceMappingURL=util-functions.js.map

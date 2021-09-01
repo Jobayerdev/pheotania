@@ -17,20 +17,16 @@ const base_service_1 = require("../../../@application/base/base.service");
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
-const service_entities_1 = require("../entities/service.entities");
-const user_entities_1 = require("./../../user/entities/user.entities");
+const service_entity_1 = require("../entities/service.entity");
 let ServiceService = class ServiceService extends base_service_1.BaseService {
-    constructor(usersRepository) {
-        super(usersRepository, user_entities_1.User.name);
-        this.usersRepository = usersRepository;
-    }
-    async filters() {
-        return this.getByCriteriaFromDB({ name: 'AC Servicing' }, { relations: [] });
+    constructor(serviceRepository) {
+        super(serviceRepository, service_entity_1.Service.name);
+        this.serviceRepository = serviceRepository;
     }
 };
 ServiceService = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(service_entities_1.Service)),
+    __param(0, typeorm_1.InjectRepository(service_entity_1.Service)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], ServiceService);
 exports.ServiceService = ServiceService;
