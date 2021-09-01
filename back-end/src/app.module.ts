@@ -15,14 +15,12 @@ import { HelperModule } from '@application/helpers/helper.module';
 import { PermissionGuard } from './app/@application/guards/permission.guard';
 import { PermissionModule } from '@modules/permission/permission.module';
 import { ResponseModifierMiddleware } from '@application/middlewares/response-modifier.middleware';
-import { ServiceModule } from '@modules/service/service.module';
 import { UserModule } from '@modules/user/user.module';
 
 @Module({
   imports: [
     AppEventModule,
     PermissionModule,
-    ServiceModule,
     UserModule,
     HelperModule,
     CommonModule,
