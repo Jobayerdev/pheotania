@@ -7,6 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDTO } from '../dtos';
 import { User } from '../entities/user.entities';
+import { UserType } from '../enums';
 
 @Injectable()
 export class UserService extends BaseService<User> {
@@ -16,10 +17,13 @@ export class UserService extends BaseService<User> {
   ) {
     super(service, User.name);
   }
-  async checkIfUserExist(phoneNumber: string): Promise<User | unknown> {
+  async checkIfUserExist(
+    phoneNumber: string,
+    type: UserType,
+  ): Promise<User | unknown> {
     try {
       const isUserExist = await this.getByCriteriaFromDB(
-        { phoneNumber },
+        { phoneNumber, type },
         {
           single: true,
           selects: ['id', 'phoneNumber', 'name', 'password'],

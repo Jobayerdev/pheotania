@@ -21,18 +21,29 @@ let AuthLoginController = class AuthLoginController {
     constructor(authLoginService) {
         this.authLoginService = authLoginService;
     }
-    async login(loginUserDto) {
-        return this.authLoginService.loginUser(loginUserDto);
+    async admin(loginUserDto) {
+        return this.authLoginService.loginAdmin(loginUserDto);
+    }
+    async customer(loginUserDto) {
+        return this.authLoginService.loginCustomer(loginUserDto);
     }
 };
 __decorate([
-    common_1.Post(''),
+    common_1.Post('admin'),
     swagger_1.ApiBody({ type: login_user_dto_1.LoginUserDTO }),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [login_user_dto_1.LoginUserDTO]),
     __metadata("design:returntype", Promise)
-], AuthLoginController.prototype, "login", null);
+], AuthLoginController.prototype, "admin", null);
+__decorate([
+    common_1.Post('customer'),
+    swagger_1.ApiBody({ type: login_user_dto_1.LoginUserDTO }),
+    __param(0, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [login_user_dto_1.LoginUserDTO]),
+    __metadata("design:returntype", Promise)
+], AuthLoginController.prototype, "customer", null);
 AuthLoginController = __decorate([
     swagger_1.ApiTags('Login'),
     common_1.Controller('auth/login'),

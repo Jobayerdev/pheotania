@@ -11,6 +11,7 @@ const core_1 = require("@nestjs/core");
 const common_1 = require("@nestjs/common");
 const exception_filter_1 = require("./app/@application/interceptor/exception.filter");
 const appevent_module_1 = require("./app/@application/events/appevent.module");
+const appointment_module_1 = require("./app/@modules/appointment/appointment.module");
 const auth_module_1 = require("./app/@modules/auth/auth.module");
 const common_module_1 = require("./app/@common/common.module");
 const filterResponse_interceptor_1 = require("./app/@application/interceptor/filterResponse.interceptor");
@@ -30,6 +31,7 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     common_1.Module({
         imports: [
+            appointment_module_1.AppointmentModule,
             service_module_1.ServiceModule,
             appevent_module_1.AppEventModule,
             permission_module_1.PermissionModule,

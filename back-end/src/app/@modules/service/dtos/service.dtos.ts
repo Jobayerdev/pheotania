@@ -3,6 +3,7 @@ import { IsNotEmpty, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { BaseDTO } from '@application/base/base.dto';
 import { BaseFilterDTO } from '@application/base';
+import { Service } from '../entities/service.entity';
 import { ServiceDepartment } from './../entities/service-department.entity';
 
 export class ServiceDTO extends BaseDTO {
@@ -66,4 +67,31 @@ export class GetAllServiceDTO extends BaseFilterDTO {
 
   @ApiProperty({ required: false, type: Boolean })
   readonly isFeatured: boolean;
+}
+export class ServicePackageAssignDTO {
+  @ApiProperty({
+    type: [],
+    example: ['bb9e855b-a7d5-4b6c-aa8d-e94938e5db62'],
+  })
+  @IsNotEmpty()
+  servicePackage: string[];
+}
+export class GetServiceByIdDTO {
+  @ApiProperty({
+    required: false,
+    description: `Example: ['name'].\n Available Options ==> ${Service.SEARCH_TERMS.join(
+      ', ',
+    )}`,
+  })
+  readonly selects: string;
+
+  @ApiProperty({
+    required: false,
+    description: `Example: ['relationName'].\n Available Relation Options ==> ${
+      Service.RELATIONS.length
+        ? Service.RELATIONS.join(', ')
+        : 'No Relations Available'
+    }`,
+  })
+  readonly relations: string;
 }

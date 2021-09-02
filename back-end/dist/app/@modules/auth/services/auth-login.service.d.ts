@@ -6,5 +6,6 @@ export declare class AuthLoginService {
     private readonly jwtHelper;
     private bcryptHelper;
     constructor(userService: UserService, jwtHelper: JWTHelper, bcryptHelper: BcryptHelper);
-    loginUser(payload: LoginUserDTO): Promise<any>;
+    loginAdmin(payload: LoginUserDTO): Promise<any>;
+    loginCustomer(payload: LoginUserDTO): Promise<any>;
 }

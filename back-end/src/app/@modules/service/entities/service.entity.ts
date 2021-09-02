@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne } from 'typeorm';
 
+import { Appointment } from '@modules/appointment/entities/appointment.entity';
 import { BaseEntity } from '@application/base/base.entity';
 import { ServiceDepartment } from './service-department.entity';
 
@@ -26,4 +27,7 @@ export class Service extends BaseEntity {
     (serviceDepartment) => serviceDepartment.services,
   )
   department?: ServiceDepartment;
+
+  @ManyToOne(() => Appointment, (appointment) => appointment.services)
+  appointments?: Appointment;
 }

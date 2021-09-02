@@ -8,6 +8,7 @@ import {
 
 import { AllExceptionsFilter } from '@application/interceptor/exception.filter';
 import { AppEventModule } from '@application/events/appevent.module';
+import { AppointmentModule } from './app/@modules/appointment/appointment.module';
 import { AuthModule } from '@modules/auth/auth.module';
 import { CommonModule } from '@common/common.module';
 import { FilterResponseInterceptor } from './app/@application/interceptor/filterResponse.interceptor';
@@ -20,6 +21,7 @@ import { UserModule } from '@modules/user/user.module';
 
 @Module({
   imports: [
+    AppointmentModule,
     ServiceModule,
     AppEventModule,
     PermissionModule,

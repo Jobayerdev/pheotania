@@ -14,15 +14,41 @@ const helpers_1 = require("../../../@application/helpers");
 const common_1 = require("@nestjs/common");
 const user_entities_1 = require("../../user/entities/user.entities");
 const user_service_1 = require("./../../user/services/user.service");
+const enums_1 = require("../../user/enums");
 let AuthLoginService = class AuthLoginService {
     constructor(userService, jwtHelper, bcryptHelper) {
         this.userService = userService;
         this.jwtHelper = jwtHelper;
         this.bcryptHelper = bcryptHelper;
     }
-    async loginUser(payload) {
+    async loginAdmin(payload) {
         try {
-            const user = await this.userService.checkIfUserExist(payload.phoneNumber);
+            const user = await this.userService.checkIfUserExist(payload.phoneNumber, enums_1.UserType.Admin);
+            if (!user) {
+                throw new Error('User Not Exist');
+            }
+            const isPassCorrect = await this.bcryptHelper.compareHash(payload.password, user.password);
+            if (!isPassCorrect) {
+                throw new Error('Invalid Password');
+            }
+            const userPermissions = [
+                'SERVICE_CREATE',
+                'SERVICE_UPDATE',
+                'SERVICE_VIEW',
+            ];
+            const permissions = await this.jwtHelper.makePermissionToken(userPermissions);
+            delete user.password;
+            const resPayload = Object.assign(Object.assign({}, user), { permissions });
+            const token = await this.jwtHelper.makeAccessToken(resPayload);
+            return token;
+        }
+        catch (error) {
+            return error;
+        }
+    }
+    async loginCustomer(payload) {
+        try {
+            const user = await this.userService.checkIfUserExist(payload.phoneNumber, enums_1.UserType.Customer);
             if (!user) {
                 throw new Error('User Not Exist');
             }

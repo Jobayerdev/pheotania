@@ -10,9 +10,14 @@ import { AuthLoginService } from './../services/auth-login.service';
 export class AuthLoginController {
   constructor(private authLoginService: AuthLoginService) {}
 
-  @Post('')
+  @Post('admin')
   @ApiBody({ type: LoginUserDTO })
-  async login(@Body() loginUserDto: LoginUserDTO) {
-    return this.authLoginService.loginUser(loginUserDto);
+  async admin(@Body() loginUserDto: LoginUserDTO) {
+    return this.authLoginService.loginAdmin(loginUserDto);
+  }
+  @Post('customer')
+  @ApiBody({ type: LoginUserDTO })
+  async customer(@Body() loginUserDto: LoginUserDTO) {
+    return this.authLoginService.loginCustomer(loginUserDto);
   }
 }

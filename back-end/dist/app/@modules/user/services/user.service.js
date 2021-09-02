@@ -23,9 +23,9 @@ let UserService = class UserService extends base_1.BaseService {
         super(service, user_entities_1.User.name);
         this.service = service;
     }
-    async checkIfUserExist(phoneNumber) {
+    async checkIfUserExist(phoneNumber, type) {
         try {
-            const isUserExist = await this.getByCriteriaFromDB({ phoneNumber }, {
+            const isUserExist = await this.getByCriteriaFromDB({ phoneNumber, type }, {
                 single: true,
                 selects: ['id', 'phoneNumber', 'name', 'password'],
             });

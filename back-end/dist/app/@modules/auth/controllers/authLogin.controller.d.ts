@@ -3,5 +3,6 @@ import { AuthLoginService } from './../services/auth-login.service';
 export declare class AuthLoginController {
     private authLoginService;
     constructor(authLoginService: AuthLoginService);
-    login(loginUserDto: LoginUserDTO): Promise<any>;
+    admin(loginUserDto: LoginUserDTO): Promise<any>;
+    customer(loginUserDto: LoginUserDTO): Promise<any>;
 }
