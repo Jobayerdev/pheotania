@@ -17,19 +17,8 @@ export enum PathsEnum {
   createPermissionType = '/admin/permissions/create-permission-type/',
   updatePermissionType = '/admin/permissions/update-permission-type/',
 
-  breedList = '/admin/breed/list/',
-  createBreed = '/admin/breed/create-new/',
-  updateBreed = '/admin/breed/update/',
-
-  serviceList = '/admin/service/list/',
-  createService = '/admin/service/create-new/',
-  updateService = '/admin/service/update/',
-
-  petTypeList = '/admin/petType/list/',
-  createPetType = '/admin/petType/create-new/',
-  updatePetType = '/admin/petType/update/',
-
-  petList = '/admin/pet/list/',
-  createPet = '/admin/pet/create-new/',
-  updatePet = '/admin/pet/update/',
+  servicesList = '/admin/services/list/',
+  service = '/admin/services/',
+  departmentsList = '/admin/services/departments/list/',
+  department = '/admin/services/departments/',
 }

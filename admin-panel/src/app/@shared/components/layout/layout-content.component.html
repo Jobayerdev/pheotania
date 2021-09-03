@@ -77,6 +77,26 @@
           </li>
         </ul>
       </li>
+      <li nz-submenu nzTitle="Services" nzIcon="lock">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.servicesList]"
+              routerLinkActive="router-link-active"
+            >
+              List</a
+            >
+          </li>
+
+          <li nz-menu-item nzMatchRouter>
+            <a
+              [routerLink]="[routePathsEnum.departmentsList]"
+              routerLinkActive="router-link-active"
+              >Departments</a
+            >
+          </li>
+        </ul>
+      </li>
     </ul>
   </nz-sider>
   <nz-layout>

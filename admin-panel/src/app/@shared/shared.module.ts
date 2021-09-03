@@ -2,7 +2,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 
 import { CommonModule } from '@angular/common';
-import { DebouncePetTypeSelectFieldComponent } from './components/debounce-pet-type-select-field/debounce-pet-type-select-field.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IconsProviderModule } from '@core/icons-provider.module';
 import { LayoutContentComponent } from './components/layout/layout-content.component';
@@ -15,7 +14,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [LayoutContentComponent, DebouncePetTypeSelectFieldComponent],
+  declarations: [LayoutContentComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -31,6 +30,6 @@ import { RouterModule } from '@angular/router';
     NzSelectModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
-  exports: [DebouncePetTypeSelectFieldComponent],
+  exports: [],
 })
 export class SharedModule {}

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { DebouncePetTypeSelectFieldComponent } from './debounce-pet-type-select-field.component';
+import { UpdateServiceDepartmentPageComponent } from './update-service-department-page.component';
 
-describe('DebouncePetTypeSelectFieldComponent', () => {
-  let component: DebouncePetTypeSelectFieldComponent;
-  let fixture: ComponentFixture<DebouncePetTypeSelectFieldComponent>;
+describe('UpdateServiceDepartmentPageComponent', () => {
+  let component: UpdateServiceDepartmentPageComponent;
+  let fixture: ComponentFixture<UpdateServiceDepartmentPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DebouncePetTypeSelectFieldComponent ]
+      declarations: [ UpdateServiceDepartmentPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DebouncePetTypeSelectFieldComponent);
+    fixture = TestBed.createComponent(UpdateServiceDepartmentPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
