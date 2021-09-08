@@ -42,10 +42,6 @@ export class CreateUserPageComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
     if (this.validateForm.invalid === false) {
-      console.log(
-        '🚀 ~ file: create-user-page.component.ts ~ line 48 ~ CreateUserPageComponent ~ submitForm ~ this.validateForm.value',
-        this.validateForm.value,
-      );
       this.userService
         .create(this.validateForm.value)
         .pipe(untilDestroyed(this))

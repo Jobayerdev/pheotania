@@ -52,10 +52,6 @@ export class UpdateRolePageComponent implements OnInit {
       .getById(id)
       .pipe(untilDestroyed(this))
       .subscribe((res: IBaseResponse) => {
-        console.log(
-          '🚀 ~ file: update-role-page.component.ts ~ line 55 ~ UpdateRolePageComponent ~ .subscribe ~ res',
-          res,
-        );
         this.validateForm.setValue({
           title: res.payload.title,
         });

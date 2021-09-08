@@ -87,9 +87,6 @@ export class ResponseModifierMiddleware implements NestMiddleware {
     //   }
     // });
 
-    // console.log(_req);
-    // console.log(Object.keys(req.query));
-
     next();
   }
 }

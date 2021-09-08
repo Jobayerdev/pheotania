@@ -68,10 +68,6 @@ export class RolesPageComponent implements OnInit {
       .delete(id)
       .pipe(untilDestroyed(this))
       .subscribe((res: IBaseResponse) => {
-        console.log(
-          '🚀 ~ file: roles-page.component.ts ~ line 71 ~ RolesPageComponent ~ .subscribe ~ res',
-          res,
-        );
         this.notificationService.success(StaticEnum.DELETED_SUCCESS, '');
         this.response.data = this.response.data.filter(
           (x: any) => x.id !== res.payload.id,

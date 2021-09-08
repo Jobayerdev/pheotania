@@ -38,7 +38,7 @@ export class UpdateUserPageComponent implements OnInit {
   }
 
   submitForm(): void {
-    console.log(this.validateForm.value);
+    this.validateForm.value;
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();

@@ -22,7 +22,6 @@ import { UserModule } from '@modules/user/user.module';
 import { UtilsModule } from '@modules/utils/utils.module';
 import { join } from 'path';
 
-console.log(join(__dirname, '.', 'uploads'));
 @Module({
   imports: [
     AppointmentModule,

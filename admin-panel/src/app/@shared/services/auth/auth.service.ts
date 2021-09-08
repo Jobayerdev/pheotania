@@ -14,10 +14,6 @@ export class AuthService {
   adminLogin(authCredential: AuthCredential) {
     return this.http.post(`${this.END_POINT}`, authCredential).pipe(
       tap((x: any) => {
-        console.log(
-          '🚀 ~ file: auth.service.ts ~ line 17 ~ AuthService ~ tap ~ x',
-          x,
-        );
         localStorage.setItem('token', String(x?.payload?.token));
       }),
     );
@@ -45,7 +41,6 @@ export class AuthService {
       const decodePermissions: any = jwt_decode(
         String(decodedMainToken.permissions),
       );
-      // console.log('decodePermissions', decodePermissions);
       return decodePermissions.permissions;
     } catch (error) {
       return [];

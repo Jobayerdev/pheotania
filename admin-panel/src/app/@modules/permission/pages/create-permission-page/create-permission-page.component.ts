@@ -61,10 +61,6 @@ export class CreatePermissionPageComponent implements OnInit {
   getRandomOptions = (name: string) =>
     this.permissionTypesService.filter({ searchTerm: name }).pipe(
       map((list: any) => {
-        console.log(
-          '🚀 ~ file: create-permission-page.component.ts ~ line 62 ~ CreatePermissionPageComponent ~ map ~ list',
-          list,
-        );
         return list.payload.map((item: any) => {
           return {
             label: item.title,
@@ -80,7 +76,6 @@ export class CreatePermissionPageComponent implements OnInit {
     } else if (Object.keys(this.selectedOption).length === 0) {
       this.notificationService.error('Invalid Permission Type', '');
     } else {
-      console.log(this.selectedOption);
       this.permissionsService
         .create({
           permissionType: this.selectedOption as any,
