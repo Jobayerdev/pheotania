@@ -21,4 +21,10 @@ export declare const ENV: {
     SALT_ROUNDS: string;
     EXPIRES_IN: string;
     DEFAULT_USER_ROLE: string;
+    UPLOAD_BASE_PUBLIC_PATH: string;
+    CN_CLOUD_NAME: string;
+    CN_API_KEY: string;
+    CN_API_SECRET: string;
+    CN_ENHANCE_IMAGE_TAG: boolean;
+    CN_STATIC_FILE_SUPPORT: boolean;
 };

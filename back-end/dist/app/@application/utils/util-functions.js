@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getRandomString = exports.asyncForEach = exports.getEntityProperties = exports.extractToken = exports.ILIKE = void 0;
+exports.toBool = exports.generateFilename = exports.storageImageOptions = exports.getRandomString = exports.asyncForEach = exports.getEntityProperties = exports.extractToken = exports.ILIKE = void 0;
+const path = require("path");
 const typeorm_1 = require("typeorm");
 const base_interfaces_1 = require("../interfaces/base.interfaces");
+const multer_1 = require("multer");
 const ILIKE = (searchterm) => {
     return typeorm_1.Raw((alias) => `${alias} ILIKE '%${searchterm}%'`);
 };
@@ -50,4 +52,18 @@ const getRandomString = (length) => {
     return result;
 };
 exports.getRandomString = getRandomString;
+exports.storageImageOptions = multer_1.diskStorage({
+    destination: './uploads/images',
+    filename: (req, file, callback) => {
+        callback(null, generateFilename(file));
+    },
+});
+function generateFilename(file) {
+    return `${Date.now()}${path.extname(file.originalname)}`;
+}
+exports.generateFilename = generateFilename;
+function toBool(value) {
+    return value === 'true';
+}
+exports.toBool = toBool;
 //# sourceMappingURL=util-functions.js.map

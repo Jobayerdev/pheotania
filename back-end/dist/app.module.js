@@ -19,8 +19,12 @@ const helper_module_1 = require("./app/@application/helpers/helper.module");
 const permission_guard_1 = require("./app/@application/guards/permission.guard");
 const permission_module_1 = require("./app/@modules/permission/permission.module");
 const response_modifier_middleware_1 = require("./app/@application/middlewares/response-modifier.middleware");
+const serve_static_1 = require("@nestjs/serve-static");
 const service_module_1 = require("./app/@modules/service/service.module");
 const user_module_1 = require("./app/@modules/user/user.module");
+const utils_module_1 = require("./app/@modules/utils/utils.module");
+const path_1 = require("path");
+console.log(path_1.join(__dirname, '.', 'uploads'));
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
@@ -40,6 +44,11 @@ AppModule = __decorate([
             common_module_1.CommonModule,
             auth_module_1.AuthModule,
             appevent_module_1.AppEventModule,
+            utils_module_1.UtilsModule,
+            serve_static_1.ServeStaticModule.forRoot({
+                rootPath: path_1.join(__dirname, '..', 'uploads'),
+                exclude: ['/api/v1/*'],
+            }),
         ],
         controllers: [],
         providers: [

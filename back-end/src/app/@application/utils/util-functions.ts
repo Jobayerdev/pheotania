@@ -1,6 +1,9 @@
+import * as path from 'path';
+
 import { Raw, getConnection } from 'typeorm';
 
 import { IProperties } from '@application/interfaces/base.interfaces';
+import { diskStorage } from 'multer';
 
 export const ILIKE = (searchterm: any) => {
   return Raw((alias) => `${alias} ILIKE '%${searchterm}%'`);
@@ -57,3 +60,17 @@ export const getRandomString = (length) => {
   }
   return result;
 };
+//? Storage Image Options
+export const storageImageOptions = diskStorage({
+  destination: './uploads/images',
+  filename: (req, file, callback) => {
+    callback(null, generateFilename(file));
+  },
+});
+//? Generate Filename
+export function generateFilename(file) {
+  return `${Date.now()}${path.extname(file.originalname)}`;
+}
+export function toBool(value) {
+  return value === 'true';
+}

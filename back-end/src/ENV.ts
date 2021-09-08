@@ -1,6 +1,7 @@
 import * as path from 'path';
 
 import { config } from 'dotenv';
+import { toBool } from '@application/utils';
 
 config({
   path: path.join(
@@ -38,4 +39,12 @@ export const ENV = {
   EXPIRES_IN: process.env.EXPIRES_IN,
 
   DEFAULT_USER_ROLE: process.env.DEFAULT_USER_ROLE,
+
+  UPLOAD_BASE_PUBLIC_PATH: process.env.UPLOAD_BASE_PUBLIC_PATH,
+
+  CN_CLOUD_NAME: process.env.CN_CLOUD_NAME,
+  CN_API_KEY: process.env.CN_API_KEY,
+  CN_API_SECRET: process.env.CN_API_SECRET,
+  CN_ENHANCE_IMAGE_TAG: toBool(process.env.CN_ENHANCE_IMAGE_TAG),
+  CN_STATIC_FILE_SUPPORT: toBool(process.env.CN_STATIC_FILE_SUPPORT),
 };

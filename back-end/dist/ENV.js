@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ENV = exports.ENV_STAGING = exports.ENV_PRODUCTION = exports.ENV_DEVELOPMENT = void 0;
 const path = require("path");
 const dotenv_1 = require("dotenv");
+const utils_1 = require("./app/@application/utils");
 dotenv_1.config({
     path: path.join(process.cwd(), 'environments', `${process.env.NODE_ENV || 'development'}.env`),
 });
@@ -29,5 +30,11 @@ exports.ENV = {
     SALT_ROUNDS: process.env.SALT_ROUNDS,
     EXPIRES_IN: process.env.EXPIRES_IN,
     DEFAULT_USER_ROLE: process.env.DEFAULT_USER_ROLE,
+    UPLOAD_BASE_PUBLIC_PATH: process.env.UPLOAD_BASE_PUBLIC_PATH,
+    CN_CLOUD_NAME: process.env.CN_CLOUD_NAME,
+    CN_API_KEY: process.env.CN_API_KEY,
+    CN_API_SECRET: process.env.CN_API_SECRET,
+    CN_ENHANCE_IMAGE_TAG: utils_1.toBool(process.env.CN_ENHANCE_IMAGE_TAG),
+    CN_STATIC_FILE_SUPPORT: utils_1.toBool(process.env.CN_STATIC_FILE_SUPPORT),
 };
 //# sourceMappingURL=ENV.js.map

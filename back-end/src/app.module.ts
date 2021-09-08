@@ -16,9 +16,13 @@ import { HelperModule } from '@application/helpers/helper.module';
 import { PermissionGuard } from './app/@application/guards/permission.guard';
 import { PermissionModule } from '@modules/permission/permission.module';
 import { ResponseModifierMiddleware } from '@application/middlewares/response-modifier.middleware';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { ServiceModule } from './app/@modules/service/service.module';
 import { UserModule } from '@modules/user/user.module';
+import { UtilsModule } from '@modules/utils/utils.module';
+import { join } from 'path';
 
+console.log(join(__dirname, '.', 'uploads'));
 @Module({
   imports: [
     AppointmentModule,
@@ -30,6 +34,11 @@ import { UserModule } from '@modules/user/user.module';
     CommonModule,
     AuthModule,
     AppEventModule,
+    UtilsModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'),
+      exclude: ['/api/v1/*'],
+    }),
   ],
   controllers: [],
   providers: [
