@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { CreateServiceDepartmentComponent } from './pages/create-service-department/create-service-department.component';
 import { ServiceDepartmentPageComponent } from './pages/service-department-page/service-department-page.component';
 import { ServiceDepartmentsPageComponent } from './pages/service-departments-page/service-departments-page.component';
 import { ServicePageComponent } from './pages/service-page/service-page.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'departments:id',
     component: ServiceDepartmentPageComponent,
+  },
+  {
+    path: 'departments/create',
+    component: CreateServiceDepartmentComponent,
   },
 ];
 

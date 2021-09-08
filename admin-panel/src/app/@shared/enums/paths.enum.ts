@@ -21,4 +21,5 @@ export enum PathsEnum {
   service = '/admin/services/',
   departmentsList = '/admin/services/departments/list/',
   department = '/admin/services/departments/',
+  createDepartment = '/admin/services/departments/create',
 }

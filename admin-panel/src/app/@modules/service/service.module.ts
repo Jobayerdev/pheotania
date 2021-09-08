@@ -1,6 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
+import { CreateServiceDepartmentComponent } from './pages/create-service-department/create-service-department.component';
 import { NgModule } from '@angular/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
@@ -26,6 +27,7 @@ const COMPONENTS = [
   UpdateServiceDepartmentPageComponent,
   ServicePageComponent,
   ServicesPageComponent,
+  CreateServiceDepartmentComponent,
 ];
 @NgModule({
   imports: [
