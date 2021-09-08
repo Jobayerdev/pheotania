@@ -9,7 +9,7 @@ https://docs.nestjs.com/providers#services
 export class ImagesService {
   constructor(private cloudinaryService: CloudinaryService) {}
 
-  async uploadImage(file: Express.Multer.File) {
+  async uploadImage(file: any) {
     try {
       return await this.cloudinaryService.uploadImage(file.path);
     } catch (error) {
