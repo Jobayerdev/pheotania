@@ -5,9 +5,7 @@
   "main": ".eslintrc.js",
   "scripts": {
     "start": "npm install && npm run prod:backEnd",
-    "prod:backEnd": "cd back-end && npm run build && npm run start:prod",
-    "dev:backEnd": "cd back-end && npm run start",
-    "dev:admin": "cd admin-panel && npm run start"
+    "prod:backEnd": "cd back-end && npm install  && npm run build && npm run start:prod"
   },
   "repository": {
     "type": "git",
