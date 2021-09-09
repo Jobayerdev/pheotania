@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseController = void 0;
 const requestoptions_decorator_1 = require("../decorators/requestoptions.decorator");
 const base_interfaces_1 = require("../interfaces/base.interfaces");
-const dtos_1 = require("../../@modules/user/dtos");
 const user_entities_1 = require("../../@modules/user/entities/user.entities");
 const common_1 = require("@nestjs/common");
 class BaseController {
@@ -44,7 +43,7 @@ __decorate([
     __param(0, requestoptions_decorator_1.RequestOptions()),
     __param(1, common_1.Query()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, dtos_1.GetAllUsersDTO]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], BaseController.prototype, "getAll", null);
 __decorate([

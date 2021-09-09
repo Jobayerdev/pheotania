@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ServiceController = void 0;
 const requestoptions_decorator_1 = require("../../../@application/decorators/requestoptions.decorator");
 const base_interfaces_1 = require("../../../@application/interfaces/base.interfaces");
-const dtos_1 = require("../../user/dtos");
+const index_1 = require("../../user/dtos/index");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const service_dtos_1 = require("../dtos/service.dtos");
@@ -43,7 +43,7 @@ let ServiceController = class ServiceController {
 };
 __decorate([
     common_1.Get(),
-    swagger_1.ApiProperty({ type: dtos_1.GetAllUsersDTO }),
+    swagger_1.ApiProperty({ type: index_1.GetAllUsersDTO }),
     __param(0, requestoptions_decorator_1.RequestOptions()),
     __param(1, common_1.Query()),
     __metadata("design:type", Function),
@@ -52,7 +52,7 @@ __decorate([
 ], ServiceController.prototype, "getAll", null);
 __decorate([
     common_1.Get(':id'),
-    swagger_1.ApiProperty({ type: dtos_1.GetUserByIdDTO }),
+    swagger_1.ApiProperty({ type: index_1.GetUserByIdDTO }),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
