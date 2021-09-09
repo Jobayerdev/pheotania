@@ -4,7 +4,7 @@ import {
   IMessageOnlyResponse,
   IOptions,
 } from '@application/interfaces/base.interfaces';
-import { GetAllUsersDTO, GetUserByIdDTO } from '@modules/user/dtos';
+import { GetAllUsersDTO, GetUserByIdDTO } from '@modules/user/dtos/index';
 import {
   Body,
   Controller,

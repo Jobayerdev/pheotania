@@ -8,7 +8,6 @@ import {
   IMessageOnlyResponse,
   IOptions,
 } from '@application/interfaces/base.interfaces';
-import { GetAllUsersDTO } from '@modules/user/dtos';
 import { User } from '@modules/user/entities/user.entities';
 import { Body, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 
@@ -22,7 +21,7 @@ export abstract class BaseController<CreateDTO, UpdateDTO> {
   @Get()
   async getAll(
     @RequestOptions() reqOptions: IOptions,
-    @Query() reqPayloads: GetAllUsersDTO,
+    @Query() reqPayloads: any,
   ): Promise<IGetAllFromDBResponse<User>> {
     return this._service.getAllFromDB(reqPayloads, reqOptions);
   }
