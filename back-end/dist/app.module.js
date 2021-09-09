@@ -24,7 +24,6 @@ const service_module_1 = require("./app/@modules/service/service.module");
 const user_module_1 = require("./app/@modules/user/user.module");
 const utils_module_1 = require("./app/@modules/utils/utils.module");
 const path_1 = require("path");
-console.log(path_1.join(__dirname, '.', 'uploads'));
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
