@@ -5,7 +5,6 @@ const app_module_1 = require("./app.module");
 const ENV_1 = require("./ENV");
 const core_1 = require("@nestjs/core");
 const common_1 = require("@nestjs/common");
-const helmet_1 = require("helmet");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.enableCors({ origin: '*' });
@@ -18,7 +17,6 @@ async function bootstrap() {
         .addBearerAuth()
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, options);
-    app.use(helmet_1.default());
     swagger_1.SwaggerModule.setup('/docs', app, document);
     console.log(ENV_1.ENV);
     await app.listen(process.env.PORT || ENV_1.ENV.port);

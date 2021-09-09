@@ -4,7 +4,6 @@ import { AppModule } from './app.module';
 import { ENV } from './ENV';
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
-import helmet from 'helmet';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -18,7 +17,6 @@ async function bootstrap() {
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  app.use(helmet());
 
   SwaggerModule.setup('/docs', app, document);
   console.log(ENV);
