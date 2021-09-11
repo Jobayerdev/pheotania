@@ -20,15 +20,15 @@ let UserExtendedPermission = class UserExtendedPermission extends base_1.BaseEnt
     }
 };
 __decorate([
-    typeorm_1.ManyToOne(() => user_entities_1.User),
+    (0, typeorm_1.ManyToOne)(() => user_entities_1.User),
     __metadata("design:type", user_entities_1.User)
 ], UserExtendedPermission.prototype, "user", void 0);
 __decorate([
-    typeorm_1.ManyToOne(() => permissions_entity_1.Permission),
+    (0, typeorm_1.ManyToOne)(() => permissions_entity_1.Permission),
     __metadata("design:type", permissions_entity_1.Permission)
 ], UserExtendedPermission.prototype, "permission", void 0);
 UserExtendedPermission = __decorate([
-    typeorm_1.Entity('user_extended_permissions'),
+    (0, typeorm_1.Entity)('user_extended_permissions'),
     __metadata("design:paramtypes", [])
 ], UserExtendedPermission);
 exports.UserExtendedPermission = UserExtendedPermission;

@@ -6,7 +6,7 @@ const typeorm_1 = require("typeorm");
 const base_interfaces_1 = require("../interfaces/base.interfaces");
 const multer_1 = require("multer");
 const ILIKE = (searchterm) => {
-    return typeorm_1.Raw((alias) => `${alias} ILIKE '%${searchterm}%'`);
+    return (0, typeorm_1.Raw)((alias) => `${alias} ILIKE '%${searchterm}%'`);
 };
 exports.ILIKE = ILIKE;
 function extractToken(headers) {
@@ -17,7 +17,7 @@ function extractToken(headers) {
 exports.extractToken = extractToken;
 async function getEntityProperties(entityName) {
     try {
-        const entity = await typeorm_1.getConnection().getMetadata(entityName);
+        const entity = await (0, typeorm_1.getConnection)().getMetadata(entityName);
         const searchTerms = entity.target.SEARCH_TERMS || [];
         const orders = entity.target.ORDERS || [];
         const ownColumns = await entity.ownColumns
@@ -52,7 +52,7 @@ const getRandomString = (length) => {
     return result;
 };
 exports.getRandomString = getRandomString;
-exports.storageImageOptions = multer_1.diskStorage({
+exports.storageImageOptions = (0, multer_1.diskStorage)({
     destination: './uploads/images',
     filename: (req, file, callback) => {
         callback(null, generateFilename(file));

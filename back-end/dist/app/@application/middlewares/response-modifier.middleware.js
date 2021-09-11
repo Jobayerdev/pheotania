@@ -81,7 +81,7 @@ let ResponseModifierMiddleware = class ResponseModifierMiddleware {
     }
 };
 ResponseModifierMiddleware = __decorate([
-    common_1.Injectable()
+    (0, common_1.Injectable)()
 ], ResponseModifierMiddleware);
 exports.ResponseModifierMiddleware = ResponseModifierMiddleware;
 //# sourceMappingURL=response-modifier.middleware.js.map

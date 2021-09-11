@@ -12,7 +12,7 @@ const successResponse_type_1 = require("../types/successResponse.type");
 const operators_1 = require("rxjs/operators");
 let FilterResponseInterceptor = class FilterResponseInterceptor {
     intercept(context, next) {
-        return next.handle().pipe(operators_1.map((content) => {
+        return next.handle().pipe((0, operators_1.map)((content) => {
             if (content instanceof Error) {
                 throw content;
             }
@@ -35,7 +35,7 @@ let FilterResponseInterceptor = class FilterResponseInterceptor {
     }
 };
 FilterResponseInterceptor = __decorate([
-    common_1.Injectable()
+    (0, common_1.Injectable)()
 ], FilterResponseInterceptor);
 exports.FilterResponseInterceptor = FilterResponseInterceptor;
 //# sourceMappingURL=filterResponse.interceptor.js.map

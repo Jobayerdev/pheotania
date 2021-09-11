@@ -4,7 +4,7 @@ exports.ENV = exports.ENV_STAGING = exports.ENV_PRODUCTION = exports.ENV_DEVELOP
 const path = require("path");
 const dotenv_1 = require("dotenv");
 const utils_1 = require("./app/@application/utils");
-dotenv_1.config({
+(0, dotenv_1.config)({
     path: path.join(process.cwd(), 'environments', `${process.env.NODE_ENV || 'development'}.env`),
 });
 exports.ENV_DEVELOPMENT = 'development';
@@ -34,7 +34,7 @@ exports.ENV = {
     CN_CLOUD_NAME: process.env.CN_CLOUD_NAME,
     CN_API_KEY: process.env.CN_API_KEY,
     CN_API_SECRET: process.env.CN_API_SECRET,
-    CN_ENHANCE_IMAGE_TAG: utils_1.toBool(process.env.CN_ENHANCE_IMAGE_TAG),
-    CN_STATIC_FILE_SUPPORT: utils_1.toBool(process.env.CN_STATIC_FILE_SUPPORT),
+    CN_ENHANCE_IMAGE_TAG: (0, utils_1.toBool)(process.env.CN_ENHANCE_IMAGE_TAG),
+    CN_STATIC_FILE_SUPPORT: (0, utils_1.toBool)(process.env.CN_STATIC_FILE_SUPPORT),
 };
 //# sourceMappingURL=ENV.js.map

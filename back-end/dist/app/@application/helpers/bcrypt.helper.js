@@ -13,14 +13,14 @@ const typedi_1 = require("typedi");
 const SALT_ROUNDS = Number(ENV_1.ENV.SALT_ROUNDS) || 10;
 let BcryptHelper = class BcryptHelper {
     async hashString(plainText, slatRounds = SALT_ROUNDS) {
-        return bcryptjs_1.hash(plainText, slatRounds);
+        return (0, bcryptjs_1.hash)(plainText, slatRounds);
     }
     async compareHash(plainText, hashString) {
-        return bcryptjs_1.compare(plainText, hashString);
+        return (0, bcryptjs_1.compare)(plainText, hashString);
     }
 };
 BcryptHelper = __decorate([
-    typedi_1.Service()
+    (0, typedi_1.Service)()
 ], BcryptHelper);
 exports.BcryptHelper = BcryptHelper;
 //# sourceMappingURL=bcrypt.helper.js.map

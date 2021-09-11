@@ -87,7 +87,7 @@ class BaseService extends typeorm_1.Repository {
     }
     async getByCriteriaFromDB(criteria, options) {
         try {
-            const opt = await service_utils_1.createTypeORMFindOneOptions(criteria, options, this.entityName);
+            const opt = await (0, service_utils_1.createTypeORMFindOneOptions)(criteria, options, this.entityName);
             const entity = await this.repository.findOne(opt).catch((err) => {
                 throw new Error(err);
             });
@@ -101,13 +101,13 @@ class BaseService extends typeorm_1.Repository {
         try {
             const result = { data: null, total: 0 };
             if (options.single) {
-                const opts = await service_utils_1.createTypeORMFindOneOptions(filters, options, this.entityName);
+                const opts = await (0, service_utils_1.createTypeORMFindOneOptions)(filters, options, this.entityName);
                 result.data = await this.repository.findOne(opts).catch((err) => {
                     throw new Error(err === null || err === void 0 ? void 0 : err.name);
                 });
             }
             else {
-                const opts = await service_utils_1.createTypeORMFindManyOptions(filters, options, this.entityName);
+                const opts = await (0, service_utils_1.createTypeORMFindManyOptions)(filters, options, this.entityName);
                 const res = await this.repository.findAndCount(opts).catch((err) => {
                     throw new Error(err === null || err === void 0 ? void 0 : err.name);
                 });

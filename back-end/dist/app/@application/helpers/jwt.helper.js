@@ -6,10 +6,10 @@ const ENV_1 = require("./../../../ENV");
 const JWT_SECRET = ENV_1.ENV.JWT_SECRET;
 class JWTHelper {
     async sign(payload, options) {
-        return jsonwebtoken_1.sign(payload, JWT_SECRET, options);
+        return (0, jsonwebtoken_1.sign)(payload, JWT_SECRET, options);
     }
     async verify(token) {
-        return jsonwebtoken_1.verify(token, JWT_SECRET);
+        return (0, jsonwebtoken_1.verify)(token, JWT_SECRET);
     }
     async makeAccessToken(data) {
         const configAccess = {
@@ -20,7 +20,7 @@ class JWTHelper {
             },
         };
         const token = await this.sign(configAccess.payload, configAccess.options);
-        const tokenData = jsonwebtoken_1.decode(token);
+        const tokenData = (0, jsonwebtoken_1.decode)(token);
         const exp = tokenData.exp;
         return { token, exp };
     }

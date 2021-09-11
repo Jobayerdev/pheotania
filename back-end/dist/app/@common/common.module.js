@@ -14,7 +14,7 @@ const MODULES = [db_module_1.DatabaseModule, event_emitter_1.EventEmitterModule.
 let CommonModule = class CommonModule {
 };
 CommonModule = __decorate([
-    common_1.Module({
+    (0, common_1.Module)({
         imports: [...MODULES],
         exports: [...MODULES],
     })

@@ -12,7 +12,7 @@ const user_entities_1 = require("./../entities/user.entities");
 let UserRepository = class UserRepository extends typeorm_1.Repository {
 };
 UserRepository = __decorate([
-    typeorm_1.EntityRepository(user_entities_1.User)
+    (0, typeorm_1.EntityRepository)(user_entities_1.User)
 ], UserRepository);
 exports.UserRepository = UserRepository;
 //# sourceMappingURL=user.repository.js.map

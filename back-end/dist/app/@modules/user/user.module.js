@@ -23,7 +23,7 @@ const SUBSCRIBER = [user_subscriber_1.UserSubscriber];
 let UserModule = class UserModule {
 };
 UserModule = __decorate([
-    common_1.Module({
+    (0, common_1.Module)({
         imports: [
             typeorm_1.TypeOrmModule.forFeature([...ENTITIES, ...REPOSITORIES]),
             helper_module_1.HelperModule,

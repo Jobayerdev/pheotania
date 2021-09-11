@@ -32,7 +32,7 @@ let AppModule = class AppModule {
     }
 };
 AppModule = __decorate([
-    common_1.Module({
+    (0, common_1.Module)({
         imports: [
             appointment_module_1.AppointmentModule,
             service_module_1.ServiceModule,
@@ -45,7 +45,7 @@ AppModule = __decorate([
             appevent_module_1.AppEventModule,
             utils_module_1.UtilsModule,
             serve_static_1.ServeStaticModule.forRoot({
-                rootPath: path_1.join(__dirname, '..', 'uploads'),
+                rootPath: (0, path_1.join)(__dirname, '..', 'uploads'),
                 exclude: ['/api/v1/*'],
             }),
         ],

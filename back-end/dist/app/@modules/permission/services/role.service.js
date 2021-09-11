@@ -34,7 +34,7 @@ let RoleService = class RoleService extends base_1.BaseService {
     }
     async addUserRoles(userId, payload) {
         const userRoles = [];
-        await utils_1.asyncForEach(payload.roles, async (r) => {
+        await (0, utils_1.asyncForEach)(payload.roles, async (r) => {
             const t = {
                 user: userId,
                 role: r,
@@ -45,7 +45,7 @@ let RoleService = class RoleService extends base_1.BaseService {
         return this.getUserRoles(userId);
     }
     async removeUserRoles(userId, payload) {
-        await utils_1.asyncForEach(payload.roles, async (r) => {
+        await (0, utils_1.asyncForEach)(payload.roles, async (r) => {
             await this.userRoleService.deleteByCriteriaFromDB({
                 user: userId,
                 role: r,
@@ -55,8 +55,8 @@ let RoleService = class RoleService extends base_1.BaseService {
     }
 };
 RoleService = __decorate([
-    common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(role_entity_1.Role)),
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(role_entity_1.Role)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
         role_user_service_1.RoleUserService])
 ], RoleService);

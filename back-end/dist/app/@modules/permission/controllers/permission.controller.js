@@ -58,80 +58,80 @@ let PermissionController = PermissionController_1 = class PermissionController {
 };
 PermissionController.NAME = 'Permission';
 __decorate([
-    common_1.Get('user-permissions/:userId'),
-    permissionfor_decorator_1.PermissionFor(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.VIEW}`),
-    __param(0, common_1.Param('userId')),
+    (0, common_1.Get)('user-permissions/:userId'),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.VIEW}`),
+    __param(0, (0, common_1.Param)('userId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], PermissionController.prototype, "getUserPermissions", null);
 __decorate([
-    common_1.Post('user-extended-permissions/:userId'),
-    permissionfor_decorator_1.PermissionFor(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.CREATE}`),
-    __param(0, common_1.Param('userId')),
-    __param(1, common_1.Body()),
+    (0, common_1.Post)('user-extended-permissions/:userId'),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.CREATE}`),
+    __param(0, (0, common_1.Param)('userId')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, add_user_permission_dto_1.AddUserExtendedPermissionDTO]),
     __metadata("design:returntype", Promise)
 ], PermissionController.prototype, "addUserExtendedPermissions", null);
 __decorate([
-    common_1.Delete('user-extended-permissions/:userId'),
-    permissionfor_decorator_1.PermissionFor(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.DELETE}`),
-    __param(0, common_1.Param('userId')),
-    __param(1, common_1.Body()),
+    (0, common_1.Delete)('user-extended-permissions/:userId'),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.DELETE}`),
+    __param(0, (0, common_1.Param)('userId')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, remove_user_permission_dto_1.RemoveUserExtendedPermissionDTO]),
     __metadata("design:returntype", Promise)
 ], PermissionController.prototype, "removeUserExtendedPermissions", null);
 __decorate([
-    common_1.Get(),
-    permissionfor_decorator_1.PermissionFor(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.VIEW}`),
-    swagger_1.ApiProperty({ type: get_all_dto_1.GetAllPermissionsDTO }),
-    __param(0, requestoptions_decorator_1.RequestOptions()),
-    __param(1, common_1.Query()),
+    (0, common_1.Get)(),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.VIEW}`),
+    (0, swagger_1.ApiProperty)({ type: get_all_dto_1.GetAllPermissionsDTO }),
+    __param(0, (0, requestoptions_decorator_1.RequestOptions)()),
+    __param(1, (0, common_1.Query)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, get_all_dto_1.GetAllPermissionsDTO]),
     __metadata("design:returntype", Promise)
 ], PermissionController.prototype, "getAll", null);
 __decorate([
-    common_1.Get(':id'),
-    permissionfor_decorator_1.PermissionFor(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.VIEW}`),
-    swagger_1.ApiProperty({ type: get_by_id_dto_1.GetPermissionByIdDTO }),
-    __param(0, common_1.Param('id')),
+    (0, common_1.Get)(':id'),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.VIEW}`),
+    (0, swagger_1.ApiProperty)({ type: get_by_id_dto_1.GetPermissionByIdDTO }),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], PermissionController.prototype, "getById", null);
 __decorate([
-    common_1.Post(),
-    permissionfor_decorator_1.PermissionFor(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.CREATE}`),
-    swagger_1.ApiBody({ type: insert_dto_1.CreatePermissionDTO }),
-    __param(0, requestoptions_decorator_1.RequestOptions()),
-    __param(1, common_1.Body()),
+    (0, common_1.Post)(),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.CREATE}`),
+    (0, swagger_1.ApiBody)({ type: insert_dto_1.CreatePermissionDTO }),
+    __param(0, (0, requestoptions_decorator_1.RequestOptions)()),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, insert_dto_1.CreatePermissionDTO]),
     __metadata("design:returntype", Promise)
 ], PermissionController.prototype, "insert", null);
 __decorate([
-    common_1.Put(':id'),
-    permissionfor_decorator_1.PermissionFor(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.MODIFY}`),
-    __param(0, common_1.Param('id')),
-    __param(1, common_1.Body()),
+    (0, common_1.Put)(':id'),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.MODIFY}`),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_dto_1.PermissionUpdateDTO]),
     __metadata("design:returntype", Promise)
 ], PermissionController.prototype, "update", null);
 __decorate([
-    common_1.Delete(':id'),
-    permissionfor_decorator_1.PermissionFor(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.DELETE}`),
-    __param(0, common_1.Param('id')),
+    (0, common_1.Delete)(':id'),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionController_1.NAME}${enums_1.AppPermissionTypes.DELETE}`),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], PermissionController.prototype, "delete", null);
 PermissionController = PermissionController_1 = __decorate([
-    swagger_1.ApiTags('Permissions'),
-    common_1.Controller('permissions'),
+    (0, swagger_1.ApiTags)('Permissions'),
+    (0, common_1.Controller)('permissions'),
     __metadata("design:paramtypes", [permission_service_1.PermissionService])
 ], PermissionController);
 exports.PermissionController = PermissionController;

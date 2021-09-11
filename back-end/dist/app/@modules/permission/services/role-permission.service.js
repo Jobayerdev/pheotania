@@ -25,8 +25,8 @@ let RolePermissionService = class RolePermissionService extends base_1.BaseServi
     }
 };
 RolePermissionService = __decorate([
-    common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(role_premission_entity_1.RolePermission)),
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(role_premission_entity_1.RolePermission)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], RolePermissionService);
 exports.RolePermissionService = RolePermissionService;

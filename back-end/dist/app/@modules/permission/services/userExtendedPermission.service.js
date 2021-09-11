@@ -25,8 +25,8 @@ let UserExtendedPermissionService = class UserExtendedPermissionService extends 
     }
 };
 UserExtendedPermissionService = __decorate([
-    common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(userExtendedPermission_entity_1.UserExtendedPermission)),
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(userExtendedPermission_entity_1.UserExtendedPermission)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], UserExtendedPermissionService);
 exports.UserExtendedPermissionService = UserExtendedPermissionService;

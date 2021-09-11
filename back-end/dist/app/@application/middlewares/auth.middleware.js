@@ -19,7 +19,7 @@ let AuthMiddleware = class AuthMiddleware {
         this.jwtHelper = jwtHelper;
     }
     async use(req, res, next) {
-        const token = utils_1.extractToken(req.headers);
+        const token = (0, utils_1.extractToken)(req.headers);
         const verifiedUser = await this.jwtHelper.verify(token);
         const verifiedPermission = await this.jwtHelper.verify(verifiedUser.permissions);
         req.permissions = verifiedPermission.permissions;
@@ -36,7 +36,7 @@ let AuthMiddleware = class AuthMiddleware {
     }
 };
 AuthMiddleware = __decorate([
-    common_1.Injectable(),
+    (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [jwt_helper_1.JWTHelper])
 ], AuthMiddleware);
 exports.AuthMiddleware = AuthMiddleware;

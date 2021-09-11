@@ -47,54 +47,54 @@ let PermissionTypeController = PermissionTypeController_1 = class PermissionType
 };
 PermissionTypeController.NAME = 'PermissionType';
 __decorate([
-    common_1.Get(),
-    permissionfor_decorator_1.PermissionFor(`${PermissionTypeController_1.NAME}${enums_1.AppPermissionTypes.VIEW}`),
-    swagger_1.ApiProperty({ type: get_all_dto_1.GetAllPermissionTypesDTO }),
-    __param(0, requestoptions_decorator_1.RequestOptions()),
-    __param(1, common_1.Query()),
+    (0, common_1.Get)(),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionTypeController_1.NAME}${enums_1.AppPermissionTypes.VIEW}`),
+    (0, swagger_1.ApiProperty)({ type: get_all_dto_1.GetAllPermissionTypesDTO }),
+    __param(0, (0, requestoptions_decorator_1.RequestOptions)()),
+    __param(1, (0, common_1.Query)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, get_all_dto_1.GetAllPermissionTypesDTO]),
     __metadata("design:returntype", Promise)
 ], PermissionTypeController.prototype, "getAll", null);
 __decorate([
-    common_1.Get(':id'),
-    permissionfor_decorator_1.PermissionFor(`${PermissionTypeController_1.NAME}${enums_1.AppPermissionTypes.VIEW}`),
-    swagger_1.ApiProperty({ type: get_by_id_dto_1.GetPermissionTypeByIdDTO }),
-    __param(0, common_1.Param('id')),
+    (0, common_1.Get)(':id'),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionTypeController_1.NAME}${enums_1.AppPermissionTypes.VIEW}`),
+    (0, swagger_1.ApiProperty)({ type: get_by_id_dto_1.GetPermissionTypeByIdDTO }),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], PermissionTypeController.prototype, "getById", null);
 __decorate([
-    common_1.Post(),
-    permissionfor_decorator_1.PermissionFor(`${PermissionTypeController_1.NAME}${enums_1.AppPermissionTypes.CREATE}`),
-    swagger_1.ApiBody({ type: insert_dto_1.CreatePermissionTypeDTO }),
-    __param(0, requestoptions_decorator_1.RequestOptions()),
-    __param(1, common_1.Body()),
+    (0, common_1.Post)(),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionTypeController_1.NAME}${enums_1.AppPermissionTypes.CREATE}`),
+    (0, swagger_1.ApiBody)({ type: insert_dto_1.CreatePermissionTypeDTO }),
+    __param(0, (0, requestoptions_decorator_1.RequestOptions)()),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, insert_dto_1.CreatePermissionTypeDTO]),
     __metadata("design:returntype", Promise)
 ], PermissionTypeController.prototype, "insert", null);
 __decorate([
-    common_1.Put(':id'),
-    permissionfor_decorator_1.PermissionFor(`${PermissionTypeController_1.NAME}${enums_1.AppPermissionTypes.MODIFY}`),
-    __param(0, common_1.Param('id')),
-    __param(1, common_1.Body()),
+    (0, common_1.Put)(':id'),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionTypeController_1.NAME}${enums_1.AppPermissionTypes.MODIFY}`),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_dto_1.PermissionTypeUpdateDTO]),
     __metadata("design:returntype", Promise)
 ], PermissionTypeController.prototype, "update", null);
 __decorate([
-    common_1.Delete(':id'),
-    permissionfor_decorator_1.PermissionFor(`${PermissionTypeController_1.NAME}${enums_1.AppPermissionTypes.DELETE}`),
-    __param(0, common_1.Param('id')),
+    (0, common_1.Delete)(':id'),
+    (0, permissionfor_decorator_1.PermissionFor)(`${PermissionTypeController_1.NAME}${enums_1.AppPermissionTypes.DELETE}`),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], PermissionTypeController.prototype, "delete", null);
 PermissionTypeController = PermissionTypeController_1 = __decorate([
-    swagger_1.ApiTags('PermissionType'),
-    common_1.Controller('permission-types'),
+    (0, swagger_1.ApiTags)('PermissionType'),
+    (0, common_1.Controller)('permission-types'),
     __metadata("design:paramtypes", [permissionType_service_1.PermissionTypeService])
 ], PermissionTypeController);
 exports.PermissionTypeController = PermissionTypeController;

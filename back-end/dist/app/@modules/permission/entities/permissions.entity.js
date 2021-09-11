@@ -19,15 +19,15 @@ Permission.SEARCH_TERMS = ['title'];
 Permission.ORDERS = ['title'];
 Permission.RELATIONS = ['permissionType'];
 __decorate([
-    typeorm_1.Column({ unique: true }),
+    (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
 ], Permission.prototype, "title", void 0);
 __decorate([
-    typeorm_1.ManyToOne((type) => permissionType_entity_1.PermissionType),
+    (0, typeorm_1.ManyToOne)((type) => permissionType_entity_1.PermissionType),
     __metadata("design:type", permissionType_entity_1.PermissionType)
 ], Permission.prototype, "permissionType", void 0);
 Permission = __decorate([
-    typeorm_1.Entity('permissions')
+    (0, typeorm_1.Entity)('permissions')
 ], Permission);
 exports.Permission = Permission;
 //# sourceMappingURL=permissions.entity.js.map

@@ -25,8 +25,8 @@ let PermissionTypeService = class PermissionTypeService extends base_1.BaseServi
     }
 };
 PermissionTypeService = __decorate([
-    common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(permissionType_entity_1.PermissionType)),
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(permissionType_entity_1.PermissionType)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], PermissionTypeService);
 exports.PermissionTypeService = PermissionTypeService;

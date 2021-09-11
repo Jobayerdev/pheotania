@@ -28,8 +28,8 @@ let RoleUserService = class RoleUserService extends base_1.BaseService {
     }
 };
 RoleUserService = __decorate([
-    common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(role_user_entity_1.RoleUser)),
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(role_user_entity_1.RoleUser)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], RoleUserService);
 exports.RoleUserService = RoleUserService;

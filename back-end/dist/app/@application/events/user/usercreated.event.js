@@ -34,13 +34,13 @@ let UserCreatedEvent = class UserCreatedEvent {
     }
 };
 __decorate([
-    event_emitter_1.OnEvent(events_constants_1.USER_CREATED),
+    (0, event_emitter_1.OnEvent)(events_constants_1.USER_CREATED),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UserCreatedEvent.prototype, "handleUserCreatedEvent", null);
 UserCreatedEvent = __decorate([
-    common_1.Injectable(),
+    (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [role_service_1.RoleService,
         role_user_service_1.RoleUserService])
 ], UserCreatedEvent);

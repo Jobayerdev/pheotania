@@ -15,15 +15,15 @@ const swagger_1 = require("@nestjs/swagger");
 class LoginUserDTO {
 }
 __decorate([
-    class_validator_1.IsString(),
-    class_validator_1.IsNotEmpty(),
-    swagger_1.ApiProperty({ example: '0185375354' }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({ example: '0185375354' }),
     __metadata("design:type", String)
 ], LoginUserDTO.prototype, "phoneNumber", void 0);
 __decorate([
-    class_validator_1.IsString(),
-    class_validator_1.IsNotEmpty(),
-    swagger_1.ApiProperty({ example: '123456' }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({ example: '123456' }),
     __metadata("design:type", String)
 ], LoginUserDTO.prototype, "password", void 0);
 exports.LoginUserDTO = LoginUserDTO;

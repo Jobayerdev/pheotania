@@ -14,7 +14,7 @@ const EVENTS = [usercreated_event_1.UserCreatedEvent];
 let AppEventModule = class AppEventModule {
 };
 AppEventModule = __decorate([
-    common_1.Module({
+    (0, common_1.Module)({
         imports: [permission_module_1.PermissionModule],
         controllers: [],
         providers: [...EVENTS],

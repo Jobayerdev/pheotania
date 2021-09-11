@@ -38,7 +38,7 @@ let PermissionGuard = class PermissionGuard {
     }
 };
 PermissionGuard = __decorate([
-    common_1.Injectable(),
+    (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [core_1.Reflector])
 ], PermissionGuard);
 exports.PermissionGuard = PermissionGuard;

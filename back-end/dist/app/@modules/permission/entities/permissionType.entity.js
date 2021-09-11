@@ -18,11 +18,11 @@ PermissionType.SEARCH_TERMS = ['title'];
 PermissionType.ORDERS = ['title'];
 PermissionType.RELATIONS = [];
 __decorate([
-    typeorm_1.Column({ unique: true }),
+    (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
 ], PermissionType.prototype, "title", void 0);
 PermissionType = __decorate([
-    typeorm_1.Entity('permissionTypes')
+    (0, typeorm_1.Entity)('permissionTypes')
 ], PermissionType);
 exports.PermissionType = PermissionType;
 //# sourceMappingURL=permissionType.entity.js.map

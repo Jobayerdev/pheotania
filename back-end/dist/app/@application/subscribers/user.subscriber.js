@@ -41,8 +41,8 @@ let UserSubscriber = class UserSubscriber {
     }
 };
 UserSubscriber = __decorate([
-    typeorm_2.EventSubscriber(),
-    __param(0, typeorm_1.InjectConnection()),
+    (0, typeorm_2.EventSubscriber)(),
+    __param(0, (0, typeorm_1.InjectConnection)()),
     __metadata("design:paramtypes", [typeorm_2.Connection,
         event_emitter_1.EventEmitter2])
 ], UserSubscriber);

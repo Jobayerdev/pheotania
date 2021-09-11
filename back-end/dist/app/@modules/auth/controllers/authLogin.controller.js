@@ -29,24 +29,24 @@ let AuthLoginController = class AuthLoginController {
     }
 };
 __decorate([
-    common_1.Post('admin'),
-    swagger_1.ApiBody({ type: login_user_dto_1.LoginUserDTO }),
-    __param(0, common_1.Body()),
+    (0, common_1.Post)('admin'),
+    (0, swagger_1.ApiBody)({ type: login_user_dto_1.LoginUserDTO }),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [login_user_dto_1.LoginUserDTO]),
     __metadata("design:returntype", Promise)
 ], AuthLoginController.prototype, "admin", null);
 __decorate([
-    common_1.Post('customer'),
-    swagger_1.ApiBody({ type: login_user_dto_1.LoginUserDTO }),
-    __param(0, common_1.Body()),
+    (0, common_1.Post)('customer'),
+    (0, swagger_1.ApiBody)({ type: login_user_dto_1.LoginUserDTO }),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [login_user_dto_1.LoginUserDTO]),
     __metadata("design:returntype", Promise)
 ], AuthLoginController.prototype, "customer", null);
 AuthLoginController = __decorate([
-    swagger_1.ApiTags('Login'),
-    common_1.Controller('auth/login'),
+    (0, swagger_1.ApiTags)('Login'),
+    (0, common_1.Controller)('auth/login'),
     __metadata("design:paramtypes", [auth_login_service_1.AuthLoginService])
 ], AuthLoginController);
 exports.AuthLoginController = AuthLoginController;

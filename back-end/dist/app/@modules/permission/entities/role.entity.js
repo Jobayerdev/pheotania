@@ -18,11 +18,11 @@ Role.SEARCH_TERMS = ['title'];
 Role.ORDERS = ['title'];
 Role.RELATIONS = [];
 __decorate([
-    typeorm_1.Column({ unique: true }),
+    (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
 ], Role.prototype, "title", void 0);
 Role = __decorate([
-    typeorm_1.Entity('roles')
+    (0, typeorm_1.Entity)('roles')
 ], Role);
 exports.Role = Role;
 //# sourceMappingURL=role.entity.js.map

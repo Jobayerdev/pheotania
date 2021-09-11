@@ -35,7 +35,7 @@ let PermissionService = class PermissionService extends base_1.BaseService {
     async getUserPermissions(userId) {
         const userRoles = await this.roleUserService.getAllFromDB({ user: userId }, { relations: ['role'] });
         const roleIDs = userRoles.data.map((o) => o.role.id);
-        const rolePermissions = await this.rolePermissionService.getAllFromDB({ role: typeorm_2.In(roleIDs) }, { relations: ['permission'] });
+        const rolePermissions = await this.rolePermissionService.getAllFromDB({ role: (0, typeorm_2.In)(roleIDs) }, { relations: ['permission'] });
         let permissions = rolePermissions.data.map((o) => o.permission.title);
         const userExtendedPermissions = await this.userPermissionService.getAllFromDB({ user: userId }, { relations: ['permission'] });
         const userExtendedPermissionNames = userExtendedPermissions.data.map((uP) => uP.permission.title);
@@ -44,7 +44,7 @@ let PermissionService = class PermissionService extends base_1.BaseService {
     }
     async addUserExtendedPermissions(userId, payload) {
         const userPermissions = [];
-        await utils_1.asyncForEach(payload.permissions, async (p) => {
+        await (0, utils_1.asyncForEach)(payload.permissions, async (p) => {
             const t = {
                 user: userId,
                 permission: p,
@@ -55,7 +55,7 @@ let PermissionService = class PermissionService extends base_1.BaseService {
         return this.getUserPermissions(userId);
     }
     async removeUserExtendedPermissions(userId, payload) {
-        await utils_1.asyncForEach(payload.permissions, async (p) => {
+        await (0, utils_1.asyncForEach)(payload.permissions, async (p) => {
             await this.userPermissionService.deleteByCriteriaFromDB({
                 user: userId,
                 permission: p,
@@ -65,8 +65,8 @@ let PermissionService = class PermissionService extends base_1.BaseService {
     }
 };
 PermissionService = __decorate([
-    common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(permissions_entity_1.Permission)),
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(permissions_entity_1.Permission)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
         role_service_1.RoleService,
         role_user_service_1.RoleUserService,

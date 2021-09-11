@@ -41,49 +41,49 @@ let UserController = class UserController {
 };
 UserController.NAME = 'User';
 __decorate([
-    common_1.Get(),
-    swagger_1.ApiProperty({ type: index_1.GetAllUsersDTO }),
-    __param(0, requestoptions_decorator_1.RequestOptions()),
-    __param(1, common_1.Query()),
+    (0, common_1.Get)(),
+    (0, swagger_1.ApiProperty)({ type: index_1.GetAllUsersDTO }),
+    __param(0, (0, requestoptions_decorator_1.RequestOptions)()),
+    __param(1, (0, common_1.Query)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, index_1.GetAllUsersDTO]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getAll", null);
 __decorate([
-    common_1.Get(':id'),
-    swagger_1.ApiProperty({ type: index_1.GetUserByIdDTO }),
-    __param(0, common_1.Param('id')),
+    (0, common_1.Get)(':id'),
+    (0, swagger_1.ApiProperty)({ type: index_1.GetUserByIdDTO }),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getById", null);
 __decorate([
-    common_1.Post(),
-    swagger_1.ApiBody({ type: index_1.CreateUserDTO }),
-    __param(0, requestoptions_decorator_1.RequestOptions()),
-    __param(1, common_1.Body()),
+    (0, common_1.Post)(),
+    (0, swagger_1.ApiBody)({ type: index_1.CreateUserDTO }),
+    __param(0, (0, requestoptions_decorator_1.RequestOptions)()),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, index_1.CreateUserDTO]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "insert", null);
 __decorate([
-    common_1.Put(':id'),
-    __param(0, common_1.Param('id')),
-    __param(1, common_1.Body()),
+    (0, common_1.Put)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, index_1.UserUpdateDTO]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "update", null);
 __decorate([
-    common_1.Delete(':id'),
-    __param(0, common_1.Param('id')),
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "delete", null);
 UserController = __decorate([
-    swagger_1.ApiTags('User'),
-    common_1.Controller('users'),
+    (0, swagger_1.ApiTags)('User'),
+    (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], UserController);
 exports.UserController = UserController;

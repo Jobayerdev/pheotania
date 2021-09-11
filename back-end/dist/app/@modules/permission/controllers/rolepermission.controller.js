@@ -39,35 +39,35 @@ let RolePermissionController = RolePermissionController_1 = class RolePermission
 };
 RolePermissionController.NAME = 'RolePermission';
 __decorate([
-    common_1.Post(),
-    permissionfor_decorator_1.PermissionFor(`${RolePermissionController_1.NAME}${enums_1.AppPermissionTypes.CREATE}`),
-    swagger_1.ApiBody({ type: insert_dto_1.CreateRolePermissionDTO }),
-    __param(0, requestoptions_decorator_1.RequestOptions()),
-    __param(1, common_1.Body()),
+    (0, common_1.Post)(),
+    (0, permissionfor_decorator_1.PermissionFor)(`${RolePermissionController_1.NAME}${enums_1.AppPermissionTypes.CREATE}`),
+    (0, swagger_1.ApiBody)({ type: insert_dto_1.CreateRolePermissionDTO }),
+    __param(0, (0, requestoptions_decorator_1.RequestOptions)()),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, insert_dto_1.CreateRolePermissionDTO]),
     __metadata("design:returntype", Promise)
 ], RolePermissionController.prototype, "insert", null);
 __decorate([
-    common_1.Put(':id'),
-    permissionfor_decorator_1.PermissionFor(`${RolePermissionController_1.NAME}${enums_1.AppPermissionTypes.MODIFY}`),
-    __param(0, common_1.Param('id')),
-    __param(1, common_1.Body()),
+    (0, common_1.Put)(':id'),
+    (0, permissionfor_decorator_1.PermissionFor)(`${RolePermissionController_1.NAME}${enums_1.AppPermissionTypes.MODIFY}`),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_dto_1.RolePermissionUpdateDTO]),
     __metadata("design:returntype", Promise)
 ], RolePermissionController.prototype, "update", null);
 __decorate([
-    common_1.Delete(':id'),
-    permissionfor_decorator_1.PermissionFor(`${RolePermissionController_1.NAME}${enums_1.AppPermissionTypes.DELETE}`),
-    __param(0, common_1.Param('id')),
+    (0, common_1.Delete)(':id'),
+    (0, permissionfor_decorator_1.PermissionFor)(`${RolePermissionController_1.NAME}${enums_1.AppPermissionTypes.DELETE}`),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], RolePermissionController.prototype, "delete", null);
 RolePermissionController = RolePermissionController_1 = __decorate([
-    swagger_1.ApiTags('RolePermissions'),
-    common_1.Controller('role-permissions'),
+    (0, swagger_1.ApiTags)('RolePermissions'),
+    (0, common_1.Controller)('role-permissions'),
     __metadata("design:paramtypes", [role_permission_service_1.RolePermissionService])
 ], RolePermissionController);
 exports.RolePermissionController = RolePermissionController;

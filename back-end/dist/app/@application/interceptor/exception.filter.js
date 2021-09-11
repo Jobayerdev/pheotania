@@ -40,7 +40,7 @@ let AllExceptionsFilter = class AllExceptionsFilter {
     }
 };
 AllExceptionsFilter = __decorate([
-    common_1.Catch()
+    (0, common_1.Catch)()
 ], AllExceptionsFilter);
 exports.AllExceptionsFilter = AllExceptionsFilter;
 //# sourceMappingURL=exception.filter.js.map

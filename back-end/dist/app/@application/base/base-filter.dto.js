@@ -14,39 +14,39 @@ const swagger_1 = require("@nestjs/swagger");
 class BaseFilterDTO {
 }
 __decorate([
-    swagger_1.ApiProperty({ required: false, description: 'abc' }),
+    (0, swagger_1.ApiProperty)({ required: false, description: 'abc' }),
     __metadata("design:type", String)
 ], BaseFilterDTO.prototype, "searchTerm", void 0);
 __decorate([
-    swagger_1.ApiProperty({ required: false, description: "['2020-04-08', '2020-06-02']" }),
+    (0, swagger_1.ApiProperty)({ required: false, description: "['2020-04-08', '2020-06-02']" }),
     __metadata("design:type", String)
 ], BaseFilterDTO.prototype, "between", void 0);
 __decorate([
-    swagger_1.ApiProperty({ required: false, description: '2021-04-08' }),
+    (0, swagger_1.ApiProperty)({ required: false, description: '2021-04-08' }),
     __metadata("design:type", String)
 ], BaseFilterDTO.prototype, "before", void 0);
 __decorate([
-    swagger_1.ApiProperty({ required: false, description: '2021-04-06' }),
+    (0, swagger_1.ApiProperty)({ required: false, description: '2021-04-06' }),
     __metadata("design:type", String)
 ], BaseFilterDTO.prototype, "after", void 0);
 __decorate([
-    swagger_1.ApiProperty({ required: false, description: '10' }),
+    (0, swagger_1.ApiProperty)({ required: false, description: '10' }),
     __metadata("design:type", Number)
 ], BaseFilterDTO.prototype, "take", void 0);
 __decorate([
-    swagger_1.ApiProperty({ required: false, description: '1' }),
+    (0, swagger_1.ApiProperty)({ required: false, description: '1' }),
     __metadata("design:type", Number)
 ], BaseFilterDTO.prototype, "page", void 0);
 __decorate([
-    swagger_1.ApiProperty({ required: false, description: 'false' }),
+    (0, swagger_1.ApiProperty)({ required: false, description: 'false' }),
     __metadata("design:type", Boolean)
 ], BaseFilterDTO.prototype, "fetchAll", void 0);
 __decorate([
-    swagger_1.ApiProperty({ required: false, description: 'false' }),
+    (0, swagger_1.ApiProperty)({ required: false, description: 'false' }),
     __metadata("design:type", Boolean)
 ], BaseFilterDTO.prototype, "single", void 0);
 __decorate([
-    swagger_1.ApiProperty({ required: false, description: 'false' }),
+    (0, swagger_1.ApiProperty)({ required: false, description: 'false' }),
     __metadata("design:type", Boolean)
 ], BaseFilterDTO.prototype, "isActive", void 0);
 exports.BaseFilterDTO = BaseFilterDTO;

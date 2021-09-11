@@ -23,7 +23,7 @@ const SUBSCRIBERS = [service_department_subscription_1.ServiceDepartmentSubscrib
 let ServiceModule = class ServiceModule {
 };
 ServiceModule = __decorate([
-    common_1.Module({
+    (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([...ENTITIES])],
         controllers: [...CONTROLLERS],
         providers: [...SERVICES, ...SUBSCRIBERS],

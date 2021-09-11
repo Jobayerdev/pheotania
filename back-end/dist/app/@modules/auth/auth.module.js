@@ -15,7 +15,7 @@ const user_module_1 = require("./../user/user.module");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
-    common_1.Module({
+    (0, common_1.Module)({
         imports: [helper_module_1.HelperModule, user_module_1.UserModule],
         controllers: [authLogin_controller_1.AuthLoginController],
         providers: [auth_login_service_1.AuthLoginService],

@@ -37,7 +37,7 @@ const SERVICE = [
 let PermissionModule = class PermissionModule {
 };
 PermissionModule = __decorate([
-    common_1.Module({
+    (0, common_1.Module)({
         imports: [
             typeorm_1.TypeOrmModule.forFeature([
                 role_entity_1.Role,

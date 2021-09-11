@@ -73,7 +73,7 @@ let AuthLoginService = class AuthLoginService {
     }
 };
 AuthLoginService = __decorate([
-    common_1.Injectable(),
+    (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [user_service_1.UserService,
         helpers_1.JWTHelper,
         helpers_1.BcryptHelper])

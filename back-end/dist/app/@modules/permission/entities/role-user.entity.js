@@ -17,15 +17,15 @@ const user_entities_1 = require("../../user/entities/user.entities");
 let RoleUser = class RoleUser extends base_1.BaseEntity {
 };
 __decorate([
-    typeorm_1.ManyToOne(() => role_entity_1.Role),
+    (0, typeorm_1.ManyToOne)(() => role_entity_1.Role),
     __metadata("design:type", role_entity_1.Role)
 ], RoleUser.prototype, "role", void 0);
 __decorate([
-    typeorm_1.ManyToOne(() => user_entities_1.User, { onDelete: 'CASCADE' }),
+    (0, typeorm_1.ManyToOne)(() => user_entities_1.User, { onDelete: 'CASCADE' }),
     __metadata("design:type", user_entities_1.User)
 ], RoleUser.prototype, "user", void 0);
 RoleUser = __decorate([
-    typeorm_1.Entity('role_users')
+    (0, typeorm_1.Entity)('role_users')
 ], RoleUser);
 exports.RoleUser = RoleUser;
 //# sourceMappingURL=role-user.entity.js.map

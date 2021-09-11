@@ -25,8 +25,8 @@ let ServiceService = class ServiceService extends base_service_1.BaseService {
     }
 };
 ServiceService = __decorate([
-    common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(service_entity_1.Service)),
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(service_entity_1.Service)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], ServiceService);
 exports.ServiceService = ServiceService;

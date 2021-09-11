@@ -13,7 +13,7 @@ const HELPERS = [_1.JWTHelper, _1.BcryptHelper];
 let HelperModule = class HelperModule {
 };
 HelperModule = __decorate([
-    common_1.Module({
+    (0, common_1.Module)({
         providers: [...HELPERS],
         exports: [...HELPERS],
     })

@@ -54,72 +54,72 @@ let RoleController = class RoleController {
     }
 };
 __decorate([
-    common_1.Get(),
-    swagger_1.ApiProperty({ example: get_all_dto_1.GetAllRolesDTO }),
-    __param(0, requestoptions_decorator_1.RequestOptions()),
-    __param(1, common_1.Query()),
+    (0, common_1.Get)(),
+    (0, swagger_1.ApiProperty)({ example: get_all_dto_1.GetAllRolesDTO }),
+    __param(0, (0, requestoptions_decorator_1.RequestOptions)()),
+    __param(1, (0, common_1.Query)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, get_all_dto_1.GetAllRolesDTO]),
     __metadata("design:returntype", Promise)
 ], RoleController.prototype, "getAll", null);
 __decorate([
-    common_1.Get(':id'),
-    swagger_1.ApiProperty({ type: get_by_id_dto_1.GetRoleByIdDTO }),
-    __param(0, common_1.Param('id')),
+    (0, common_1.Get)(':id'),
+    (0, swagger_1.ApiProperty)({ type: get_by_id_dto_1.GetRoleByIdDTO }),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], RoleController.prototype, "getById", null);
 __decorate([
-    common_1.Get('user-roles/:userId'),
-    __param(0, common_1.Param('userId')),
+    (0, common_1.Get)('user-roles/:userId'),
+    __param(0, (0, common_1.Param)('userId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], RoleController.prototype, "getUserRoles", null);
 __decorate([
-    common_1.Post('user-roles/:userId'),
-    __param(0, common_1.Param('userId')),
-    __param(1, common_1.Body()),
+    (0, common_1.Post)('user-roles/:userId'),
+    __param(0, (0, common_1.Param)('userId')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, add_user_role_dto_1.AddUserRoleDTO]),
     __metadata("design:returntype", Promise)
 ], RoleController.prototype, "addUserRoles", null);
 __decorate([
-    common_1.Post(),
-    swagger_1.ApiBody({ type: insert_dto_1.CreateRoleDTO }),
-    __param(0, common_1.Body()),
+    (0, common_1.Post)(),
+    (0, swagger_1.ApiBody)({ type: insert_dto_1.CreateRoleDTO }),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [insert_dto_1.CreateRoleDTO]),
     __metadata("design:returntype", void 0)
 ], RoleController.prototype, "create", null);
 __decorate([
-    common_1.Delete('user-roles/:userId'),
-    __param(0, common_1.Param('userId')),
-    __param(1, common_1.Body()),
+    (0, common_1.Delete)('user-roles/:userId'),
+    __param(0, (0, common_1.Param)('userId')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, remove_user_role_dto_1.RemoveUserRoleDTO]),
     __metadata("design:returntype", Promise)
 ], RoleController.prototype, "removeUserRoles", null);
 __decorate([
-    common_1.Put(':id'),
-    swagger_1.ApiBody({ type: update_dto_1.RoleUpdateDTO }),
-    __param(0, common_1.Body()),
-    __param(1, common_1.Param('id')),
+    (0, common_1.Put)(':id'),
+    (0, swagger_1.ApiBody)({ type: update_dto_1.RoleUpdateDTO }),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [update_dto_1.RoleUpdateDTO, String]),
     __metadata("design:returntype", void 0)
 ], RoleController.prototype, "update", null);
 __decorate([
-    common_1.Delete(':id'),
-    __param(0, common_1.Param('id')),
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], RoleController.prototype, "delete", null);
 RoleController = __decorate([
-    swagger_1.ApiTags('Role'),
-    common_1.Controller('roles'),
+    (0, swagger_1.ApiTags)('Role'),
+    (0, common_1.Controller)('roles'),
     __metadata("design:paramtypes", [role_service_1.RoleService])
 ], RoleController);
 exports.RoleController = RoleController;

@@ -17,15 +17,15 @@ const role_entity_1 = require("./role.entity");
 let RolePermission = class RolePermission extends base_1.BaseEntity {
 };
 __decorate([
-    typeorm_1.ManyToOne(() => role_entity_1.Role),
+    (0, typeorm_1.ManyToOne)(() => role_entity_1.Role),
     __metadata("design:type", Object)
 ], RolePermission.prototype, "role", void 0);
 __decorate([
-    typeorm_1.ManyToOne(() => permissions_entity_1.Permission),
+    (0, typeorm_1.ManyToOne)(() => permissions_entity_1.Permission),
     __metadata("design:type", permissions_entity_1.Permission)
 ], RolePermission.prototype, "permission", void 0);
 RolePermission = __decorate([
-    typeorm_1.Entity('role-permissions')
+    (0, typeorm_1.Entity)('role-permissions')
 ], RolePermission);
 exports.RolePermission = RolePermission;
 //# sourceMappingURL=role-premission.entity.js.map

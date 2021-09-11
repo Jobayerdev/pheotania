@@ -15,18 +15,18 @@ const class_validator_1 = require("class-validator");
 class AuthRegisterDTO {
 }
 __decorate([
-    swagger_1.ApiProperty({ required: true, example: 'Jobayer Hossain' }),
-    class_validator_1.IsNotEmpty(),
+    (0, swagger_1.ApiProperty)({ required: true, example: 'Jobayer Hossain' }),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AuthRegisterDTO.prototype, "name", void 0);
 __decorate([
-    swagger_1.ApiProperty({ required: true, example: '0185375354' }),
-    class_validator_1.IsNotEmpty(),
+    (0, swagger_1.ApiProperty)({ required: true, example: '0185375354' }),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AuthRegisterDTO.prototype, "phoneNumber", void 0);
 __decorate([
-    swagger_1.ApiProperty({ required: true, example: '123456' }),
-    class_validator_1.IsNotEmpty(),
+    (0, swagger_1.ApiProperty)({ required: true, example: '123456' }),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AuthRegisterDTO.prototype, "password", void 0);
 exports.AuthRegisterDTO = AuthRegisterDTO;

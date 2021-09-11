@@ -14,7 +14,7 @@ const pg = new pg_client_1.PostgressClient().getPostgressConfig();
 let DatabaseModule = class DatabaseModule {
 };
 DatabaseModule = __decorate([
-    common_1.Module({
+    (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forRoot(pg)],
     })
 ], DatabaseModule);
