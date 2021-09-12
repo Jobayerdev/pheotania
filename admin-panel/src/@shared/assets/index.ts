@@ -1,5 +1,5 @@
 export const IMAGES = {
-	Logo: require("./img/poshapets-logo.png").default,
-	LogoSmall: require("./img/poshapets-favicon.png").default,
-	LightBd: require("./img/bg.jpg").default,
-}
+  Logo: require('./img/logo.png').default,
+  LogoSmall: require('./img/logo.png').default,
+  LightBd: require('./img/bg.jpg').default,
+};

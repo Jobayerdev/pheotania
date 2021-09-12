@@ -5,6 +5,7 @@ import DefaultDashboardPage from '@modules/dashboard/routes/default-dashboard-pa
 import MainLayout from '@shared/components/layout/main-layout.component';
 import NotFound from '@shared/components/NotFound';
 import { PermissionRoutes } from '@modules/permission';
+import { ServicesRoutes } from '@modules/service/routes';
 import { UsersRoutes } from '@modules/users';
 
 const App = () => {
@@ -30,6 +31,10 @@ const ProtectedRoutes = () => {
     {
       path: 'permissions',
       children: PermissionRoutes,
+    },
+    {
+      path: 'services',
+      children: ServicesRoutes,
     },
   ];
 
